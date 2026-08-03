@@ -1,0 +1,228 @@
+﻿:root {
+  /* ==================================================
+     FONT FAMILIES
+  ================================================== */
+
+  --font-sans: var(--font-jost);
+  --font-serif: var(--font-cormorant-garamond);
+
+  /* ==================================================
+     COLORS
+  ================================================== */
+
+  --color-burgundy: #3a0f17;
+  --color-sand: #f9f5e3;
+  --color-blush: #f3dde0;
+
+  --color-background: var(--color-sand);
+  --color-foreground: var(--color-burgundy);
+
+  /* ==================================================
+     LAYOUT
+  ================================================== */
+
+  --page-gutter: 16px;
+
+  /* ==================================================
+     INTRODUCTION
+  ================================================== */
+
+  --introduction-image-width: 304px;
+
+  /* ==================================================
+     H1 / DISPLAY
+  ================================================== */
+
+  --font-display-family: var(--font-serif);
+  --font-display-size: clamp(3rem, 8vw, 4rem);
+  --font-display-weight: 500;
+  --font-display-line-height: 1;
+  --font-display-letter-spacing: 0;
+
+  /* ==================================================
+     H2 / HEADING XL
+  ================================================== */
+
+  --font-heading-xl-family: var(--font-sans);
+
+  /*
+    39px przy 402px
+    48px przy 834px
+  */
+  --font-heading-xl-size: clamp(39px, calc(30.625px + 2.083333vw), 48px);
+
+  --font-heading-xl-weight: 700;
+  --font-heading-xl-line-height: 1.2;
+  --font-heading-xl-letter-spacing: -0.02em;
+
+  /* ==================================================
+     H3 / HEADING LARGE
+  ================================================== */
+
+  --font-heading-lg-family: var(--font-sans);
+  --font-heading-lg-size: 32px;
+  --font-heading-lg-weight: 700;
+  --font-heading-lg-line-height: 1.2;
+  --font-heading-lg-letter-spacing: -0.04em;
+
+  /* ==================================================
+     H3 OFFER / HEADING SERIF
+  ================================================== */
+
+  --font-heading-serif-family: var(--font-serif);
+  --font-heading-serif-size: 32px;
+  --font-heading-serif-weight: 600;
+  --font-heading-serif-line-height: 1.2;
+  --font-heading-serif-letter-spacing: 0;
+
+  /* ==================================================
+     BODY LARGE / LEAD LARGE
+  ================================================== */
+
+  --font-lead-lg-family: var(--font-sans);
+  --font-lead-lg-size: 20px;
+  --font-lead-lg-weight: 400;
+  --font-lead-lg-line-height: 28px;
+  --font-lead-lg-letter-spacing: -0.01em;
+
+  /* ==================================================
+     BODY MEDIUM / LEAD
+  ================================================== */
+
+  --font-lead-family: var(--font-sans);
+  --font-lead-size: 18px;
+  --font-lead-weight: 400;
+  --font-lead-line-height: 1.75;
+  --font-lead-letter-spacing: -0.02em;
+
+  /* ==================================================
+     BODY
+  ================================================== */
+
+  --font-body-family: var(--font-sans);
+  --font-body-size: 16px;
+  --font-body-weight: 400;
+  --font-body-line-height: 1.75;
+  --font-body-letter-spacing: -0.02em;
+
+  /* ==================================================
+     BODY SMALL
+  ================================================== */
+
+  --font-small-family: var(--font-sans);
+  --font-small-weight: 400;
+  --font-small-letter-spacing: -0.01em;
+
+  /*
+    Rozmiar i line-height dla mobile nie zostały określone
+    w design-system.md, dlatego nie są tutaj zgadywane.
+  */
+
+  /* ==================================================
+     CAPTION
+  ================================================== */
+
+  --font-caption-family: var(--font-sans);
+  --font-caption-size: 13px;
+  --font-caption-weight: 400;
+  --font-caption-line-height: 1.2;
+  --font-caption-letter-spacing: 0;
+  --font-caption-opacity: 0.82;
+
+  /* ==================================================
+     BUTTON
+  ================================================== */
+
+  --font-button-family: var(--font-sans);
+  --font-button-size: 20px;
+  --font-button-weight: 400;
+  --font-button-line-height: 28px;
+  --font-button-letter-spacing: -0.01em;
+}
+
+/* ==================================================
+   TABLET — FIGMA 834px
+================================================== */
+
+@media (min-width: 834px) {
+  :root {
+    --page-gutter: 32px;
+
+    /*
+      Display:
+      64px przy 834px
+      90px przy 1728px
+    */
+    --font-display-size: clamp(4rem, calc(2.4841rem + 2.9083vw), 5.625rem);
+
+    /*
+      H2:
+      48px przy 834px
+      64px przy 1728px
+    */
+    --font-heading-xl-size: clamp(48px, calc(33.073826px + 1.789709vw), 64px);
+
+    /* H3 / Heading Large */
+    --font-heading-lg-size: 36px;
+
+    /* H3 Offer / Heading Serif */
+    --font-heading-serif-size: 36px;
+
+    /* Body Large */
+    --font-lead-lg-size: 24px;
+    --font-lead-lg-line-height: 28px;
+
+    /* Body Medium */
+    --font-lead-size: 20px;
+
+    /* Body Small */
+    --font-small-size: 14px;
+    --font-small-line-height: 1.2;
+  }
+}
+
+/* ==================================================
+   DESKTOP LAYOUT
+================================================== */
+
+@media (min-width: 1440px) {
+  :root {
+    --page-gutter: 124px;
+
+    /* H3 / Heading Large */
+    --font-heading-lg-size: 46px;
+
+    /* H3 Offer / Heading Serif */
+    --font-heading-serif-size: 46px;
+
+    /* Body Large */
+    --font-lead-lg-size: 32px;
+    --font-lead-lg-line-height: 1.2;
+
+    /* Body Medium */
+    --font-lead-size: 24px;
+
+    /* Button */
+    --font-button-size: 24px;
+  }
+}
+
+/* ==================================================
+   LARGE DESKTOP
+================================================== */
+
+@media (min-width: 1728px) {
+  :root {
+    /*
+      Introduction image:
+      304px przy 1728px
+      500px przy 2560px
+      maksymalnie 500px na większych ekranach
+    */
+    --introduction-image-width: clamp(
+      304px,
+      calc(-103.08px + 23.5577vw),
+      500px
+    );
+  }
+}
