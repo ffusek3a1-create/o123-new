@@ -17,11 +17,17 @@ export default function ButtonLink({
       href={href}
       className={[
         "group",
-        "type-button",
         "inline-flex",
         "items-center",
         "gap-3",
+        "rounded-sm",
+        "type-button",
         "uppercase",
+        "focus-visible:outline-none",
+        "focus-visible:ring-2",
+        "focus-visible:ring-[var(--color-sand)]",
+        "focus-visible:ring-offset-2",
+        "focus-visible:ring-offset-transparent",
         className,
       ]
         .filter(Boolean)
@@ -38,7 +44,7 @@ export default function ButtonLink({
           "justify-center",
           "leading-none",
           "transition-transform",
-          "duration-300",
+          "[transition-duration:var(--motion-duration-fast)]",
           "ease-out",
           "group-hover:translate-x-1",
           "motion-reduce:transition-none",
@@ -60,7 +66,7 @@ export default function ButtonLink({
           "after:scale-x-0",
           "after:bg-current",
           "after:transition-transform",
-          "after:duration-300",
+          "after:[transition-duration:var(--motion-duration-fast)]",
           "after:ease-out",
           "group-hover:after:scale-x-100",
           "motion-reduce:after:transition-none",

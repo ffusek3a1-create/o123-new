@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 
+import { useModal } from "@/components/modals/ModalProvider";
+import { ImageReveal } from "@/features/home/services/components/motion/ImageReveal";
+import { Reveal } from "@/components/motion/Reveal";
 import AnimatedWord from "@/components/ui/AnimatedWord";
-import ButtonLink from "@/components/ui/ButtonLink";
 import GuideLines from "@/components/ui/GuideLines";
 
 const captionTypography = `
@@ -37,8 +41,11 @@ type IntroductionProps = {
 };
 
 export default function Introduction({ content }: IntroductionProps) {
+  const { openModal } = useModal();
+
   return (
     <section
+      id="about"
       data-back-to-top-theme="burgundy"
       className="
         relative
@@ -153,56 +160,125 @@ export default function Introduction({ content }: IntroductionProps) {
         <div className="flex flex-col gap-8">
           {/* Heading */}
           <div className="flex flex-col gap-8">
-            <p className="type-small uppercase">{content.label}</p>
+            <Reveal direction="none" duration="fast" delay={40}>
+              <p className="type-small uppercase">{content.label}</p>
+            </Reveal>
 
-            <h2
-              className="
-                type-heading
-                type-heading-xl
-                h-[4lh]
-                w-full
-                min-[834px]:h-[2lh]
-                min-[1440px]:h-auto
-              "
-            >
-              {content.heading.firstLine}
-              <br />
-              {content.heading.secondLine}{" "}
-              <span className="block min-[834px]:inline">
-                <AnimatedWord
-                  className="text-[#6C9A8B]"
-                  words={[...content.heading.animated]}
-                />
-              </span>
-            </h2>
+            <Reveal distance="small">
+              <h2
+                className="
+                  type-heading
+                  type-heading-xl
+                  h-[4lh]
+                  w-full
+                  min-[834px]:h-[2lh]
+                  min-[1440px]:h-auto
+                "
+              >
+                {content.heading.firstLine}
+                <br />
+                {content.heading.secondLine}{" "}
+                <span className="block min-[834px]:inline">
+                  <AnimatedWord
+                    className="text-[#6C9A8B]"
+                    words={[...content.heading.animated]}
+                  />
+                </span>
+              </h2>
+            </Reveal>
           </div>
 
           {/* Image */}
-          <div className="image-frame h-[276px] w-full">
-            <Image
-              src="/images/introduction-image.jpg"
-              alt="Przygotowania do wyjątkowego wydarzenia organizowanego przez o123"
-              fill
-              className="object-cover object-center"
-              sizes="
-                (max-width: 833px) calc(100vw - 32px),
-                (max-width: 1439px) calc(100vw - 64px),
-                304px
-              "
-            />
-          </div>
+          <ImageReveal className="h-[276px] w-full">
+            <div className="image-frame h-[276px] w-full">
+              <Image
+                src="/images/introduction-image.jpg"
+                alt="Przygotowania do wyjątkowego wydarzenia organizowanego przez o123"
+                fill
+                className="object-cover object-center"
+                sizes="
+                  (max-width: 833px) calc(100vw - 32px),
+                  (max-width: 1439px) calc(100vw - 64px),
+                  304px
+                "
+              />
+            </div>
+          </ImageReveal>
 
           {/* Paragraph */}
-          <p className="type-text type-body w-full">
-            {content.paragraph.intro}{" "}
-            <strong>{content.paragraph.emphasisOne}</strong>{" "}
-            {content.paragraph.middle}{" "}
-            <strong>{content.paragraph.emphasisTwo}</strong>{" "}
-            {content.paragraph.outro}
-          </p>
+          <Reveal distance="small" delay={240}>
+            <p className="type-text type-body w-full">
+              {content.paragraph.intro}{" "}
+              <strong>{content.paragraph.emphasisOne}</strong>{" "}
+              {content.paragraph.middle}{" "}
+              <strong>{content.paragraph.emphasisTwo}</strong>{" "}
+              {content.paragraph.outro}
+            </p>
+          </Reveal>
 
           {/* CTA */}
-          <ButtonLink href="#contact">Schedule a call</ButtonLink>
+          <Reveal distance="small" delay={300}>
+            <button
+              type="button"
+              onClick={() => openModal("schedule")}
+              className="
+                group
+                inline-flex
+                items-center
+                gap-3
+                rounded-sm
+                type-button
+                uppercase
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[var(--color-sand)]
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-transparent
+              "
+            >
+              <span
+                aria-hidden="true"
+                className="
+                  relative
+                  top-px
+                  inline-flex
+                  shrink-0
+                  items-center
+                  justify-center
+                  leading-none
+                  transition-transform
+                  [transition-duration:var(--motion-duration-fast)]
+                  ease-out
+                  group-hover:translate-x-1
+                  motion-reduce:transition-none
+                  motion-reduce:transform-none
+                "
+              >
+                →
+              </span>
+
+              <span
+                className="
+                  relative
+                  after:absolute
+                  after:bottom-0
+                  after:left-0
+                  after:h-px
+                  after:w-full
+                  after:origin-left
+                  after:scale-x-0
+                  after:bg-current
+                  after:transition-transform
+                  after:[transition-duration:var(--motion-duration-fast)]
+                  after:ease-out
+                  group-hover:after:scale-x-100
+                  motion-reduce:after:transition-none
+                "
+              >
+                Schedule a call
+              </span>
+            </button>
+          </Reveal>
         </div>
       </div>
 
@@ -230,23 +306,26 @@ export default function Introduction({ content }: IntroductionProps) {
             pt-[72px]
           "
         >
-          <p className="type-small uppercase">{content.label}</p>
+          <Reveal direction="none" duration="fast" delay={40}>
+            <p className="type-small uppercase">{content.label}</p>
+          </Reveal>
 
-          <h2 className="type-heading type-heading-xl">
-            {content.heading.firstLine}
-            <br />
-            {content.heading.secondLine}{" "}
-            <AnimatedWord
-              className="text-[#6C9A8B]"
-              words={[...content.heading.animated]}
-            />
-          </h2>
+          <Reveal distance="small" delay={100}>
+            <h2 className="type-heading type-heading-xl">
+              {content.heading.firstLine}
+              <br />
+              {content.heading.secondLine}{" "}
+              <AnimatedWord
+                className="text-[#6C9A8B]"
+                words={[...content.heading.animated]}
+              />
+            </h2>
+          </Reveal>
         </div>
 
         {/* Center image */}
-        <div
+        <ImageReveal
           className="
-            image-frame
             [grid-area:content]
             mt-[312px]
             h-[276px]
@@ -263,7 +342,7 @@ export default function Introduction({ content }: IntroductionProps) {
               sizes="304px"
             />
           </div>
-        </div>
+        </ImageReveal>
 
         {/* Right content */}
         <div
@@ -279,16 +358,79 @@ export default function Introduction({ content }: IntroductionProps) {
             justify-self-end
           "
         >
-          <p className="type-text type-body">
-            {content.paragraph.intro}{" "}
-            <strong>{content.paragraph.emphasisOne}</strong>{" "}
-            {content.paragraph.middle}{" "}
-            <strong>{content.paragraph.emphasisTwo}</strong>{" "}
-            {content.paragraph.outro}
-          </p>
+          <Reveal distance="small" delay={240}>
+            <p className="type-text type-body">
+              {content.paragraph.intro}{" "}
+              <strong>{content.paragraph.emphasisOne}</strong>{" "}
+              {content.paragraph.middle}{" "}
+              <strong>{content.paragraph.emphasisTwo}</strong>{" "}
+              {content.paragraph.outro}
+            </p>
+          </Reveal>
 
           {/* CTA */}
-          <ButtonLink href="#contact">Schedule a call</ButtonLink>
+          <Reveal distance="small" delay={300}>
+            <button
+              type="button"
+              onClick={() => openModal("schedule")}
+              className="
+                group
+                inline-flex
+                items-center
+                gap-3
+                rounded-sm
+                type-button
+                uppercase
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[var(--color-sand)]
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-transparent
+              "
+            >
+              <span
+                aria-hidden="true"
+                className="
+                  relative
+                  top-px
+                  inline-flex
+                  shrink-0
+                  items-center
+                  justify-center
+                  leading-none
+                  transition-transform
+                  [transition-duration:var(--motion-duration-fast)]
+                  ease-out
+                  group-hover:translate-x-1
+                  motion-reduce:transition-none
+                  motion-reduce:transform-none
+                "
+              >
+                →
+              </span>
+
+              <span
+                className="
+                  relative
+                  after:absolute
+                  after:bottom-0
+                  after:left-0
+                  after:h-px
+                  after:w-full
+                  after:origin-left
+                  after:scale-x-0
+                  after:bg-current
+                  after:transition-transform
+                  after:[transition-duration:var(--motion-duration-fast)]
+                  after:ease-out
+                  group-hover:after:scale-x-100
+                  motion-reduce:after:transition-none
+                "
+              >
+                Schedule a call
+              </span>
+            </button>
+          </Reveal>
         </div>
       </div>
 

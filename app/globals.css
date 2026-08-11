@@ -5,9 +5,11 @@
 @import "../styles/animations.css";
 @import "../styles/utilities.css";
 
+
 html {
   scroll-behavior: smooth;
 }
+
 
 body {
   min-height: 100vh;
@@ -22,15 +24,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 img,
 picture {
   display: block;
   max-width: 100%;
 }
 
+
 a {
   text-decoration: none;
 }
+
 
 button,
 input,
@@ -39,9 +44,22 @@ select {
   font: inherit;
 }
 
+
+button:not(:disabled),
+a[href] {
+  cursor: pointer;
+}
+
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+
 /* ==================================================
    TEMPORARY TYPOGRAPHY IMPORT TEST
 ================================================== */
+
 
 .type-button {
   font-family: var(--font-button-family);

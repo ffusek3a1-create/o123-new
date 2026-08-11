@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import ButtonLink from "@/components/ui/ButtonLink";
+import { useModal } from "@/components/modals/ModalProvider";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/config";
 
@@ -38,8 +38,14 @@ function getCurrentLocale(pathname: string): Locale {
 export default function Navbar({ menuDescriptions }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const { openModal } = useModal();
+
   const pathname = usePathname();
   const currentLocale = getCurrentLocale(pathname);
+
+  const journalPath = `/${currentLocale}/journal`;
+  const isJournalRoute =
+    pathname === journalPath || pathname.startsWith(`${journalPath}/`);
 
   const openMenuButtonRef = useRef<HTMLButtonElement>(null);
   const menuDialogRef = useRef<HTMLDivElement>(null);
@@ -49,22 +55,22 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
     {
       label: "SERVICES",
       description: menuDescriptions.services,
-      href: "#services",
+      href: `/${currentLocale}#services`,
     },
     {
       label: "ABOUT",
       description: menuDescriptions.about,
-      href: "#about",
+      href: `/${currentLocale}#about`,
     },
     {
       label: "JOURNAL",
       description: menuDescriptions.journal,
-      href: "#journal",
+      href: `/${currentLocale}/journal`,
     },
     {
       label: "CONTACT",
       description: menuDescriptions.contact,
-      href: "#contact",
+      href: `/${currentLocale}/contact`,
     },
   ];
 
@@ -164,7 +170,14 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
 
   return (
     <>
-      <header className="relative z-40 border-b border-[var(--color-sand)]/35 bg-[var(--color-burgundy)] py-12 text-[var(--color-sand)]">
+      <header
+        className={[
+          "relative z-40 border-b border-[var(--color-sand)]/35 py-12 text-[var(--color-sand)]",
+          isJournalRoute
+            ? "bg-[#1C2A25]"
+            : "bg-[var(--color-burgundy)]",
+        ].join(" ")}
+      >
         <div className="px-[var(--page-gutter)]">
           <div className="flex items-center justify-between">
             <Link
@@ -178,11 +191,117 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
             <nav aria-label="Primary navigation">
               <ul className="flex flex-nowrap items-center whitespace-nowrap md:gap-8 min-[1440px]:gap-16">
                 <li className="hidden md:block">
-                  <ButtonLink href="#contact">Schedule a call</ButtonLink>
+                  <button
+                    type="button"
+                    onClick={() => openModal("schedule")}
+                    className="
+                      group
+                      inline-flex
+                      items-center
+                      gap-3
+                      type-button
+                      text-[var(--color-sand)]
+                    "
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="
+                        relative
+                        top-px
+                        inline-flex
+                        shrink-0
+                        items-center
+                        justify-center
+                        leading-none
+                        transition-transform
+                        duration-300
+                        ease-out
+                        group-hover:translate-x-1
+                        motion-reduce:transform-none
+                        motion-reduce:transition-none
+                      "
+                    >
+                      →
+                    </span>
+
+                    <span
+                      className="
+                        relative
+                        after:absolute
+                        after:bottom-0
+                        after:left-0
+                        after:h-px
+                        after:w-full
+                        after:origin-left
+                        after:scale-x-0
+                        after:bg-current
+                        after:transition-transform
+                        after:duration-300
+                        after:ease-out
+                        group-hover:after:scale-x-100
+                        motion-reduce:after:transition-none
+                      "
+                    >
+                      Schedule a call
+                    </span>
+                  </button>
                 </li>
 
                 <li>
-                  <ButtonLink href="#quote">Request a quote</ButtonLink>
+                  <button
+                    type="button"
+                    onClick={() => openModal("quote")}
+                    className="
+                      group
+                      inline-flex
+                      items-center
+                      gap-3
+                      type-button
+                      text-[var(--color-sand)]
+                    "
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="
+                        relative
+                        top-px
+                        inline-flex
+                        shrink-0
+                        items-center
+                        justify-center
+                        leading-none
+                        transition-transform
+                        duration-300
+                        ease-out
+                        group-hover:translate-x-1
+                        motion-reduce:transform-none
+                        motion-reduce:transition-none
+                      "
+                    >
+                      →
+                    </span>
+
+                    <span
+                      className="
+                        relative
+                        after:absolute
+                        after:bottom-0
+                        after:left-0
+                        after:h-px
+                        after:w-full
+                        after:origin-left
+                        after:scale-x-0
+                        after:bg-current
+                        after:transition-transform
+                        after:duration-300
+                        after:ease-out
+                        group-hover:after:scale-x-100
+                        motion-reduce:after:transition-none
+                      "
+                    >
+                      Request a quote
+                    </span>
+                  </button>
                 </li>
               </ul>
             </nav>
@@ -287,9 +406,13 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
                   : "-translate-y-1 opacity-0 delay-0 duration-[200ms]",
               ].join(" ")}
             >
-              <span className="type-caption uppercase">Navigation</span>
+              <span className="type-caption uppercase">
+                Navigation
+              </span>
 
-              <span className="type-caption opacity-60">o123</span>
+              <span className="type-caption opacity-60">
+                o123
+              </span>
 
               <span
                 aria-hidden="true"
@@ -308,7 +431,10 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
             <nav aria-label="Menu navigation">
               <ul>
                 {menuItems.map((item, index) => (
-                  <li key={item.href} className="group/item relative">
+                  <li
+                    key={item.href}
+                    className="group/item relative"
+                  >
                     <Link
                       href={item.href}
                       tabIndex={isMenuOpen ? 0 : -1}
@@ -332,7 +458,9 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
                       </span>
 
                       <span className="flex flex-col gap-[6px]">
-                        <span className="type-button">{item.label}</span>
+                        <span className="type-button">
+                          {item.label}
+                        </span>
 
                         <span className="type-small opacity-50">
                           {item.description}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { Reveal } from "@/components/motion/Reveal";
 import SectionCaption from "@/components/ui/SectionCaption";
 
 import PhotoCollage from "./PhotoCollage";
@@ -38,19 +39,21 @@ export default function ExperiencePhilosophy({
       {/* Mobile / Tablet caption */}
       <SectionCaption title="Services" number="03/05" />
 
-      <h2
-        className="
-          type-heading
-          type-heading-xl
-          mt-12
-          min-[834px]:mt-16
-          min-[1440px]:mt-0
-        "
-      >
-        {content.heading.firstLine}
-        <br />
-        {content.heading.secondLine}
-      </h2>
+      <Reveal distance="small" delay={60}>
+        <h2
+          className="
+            type-heading
+            type-heading-xl
+            mt-12
+            min-[834px]:mt-16
+            min-[1440px]:mt-0
+          "
+        >
+          {content.heading.firstLine}
+          <br />
+          {content.heading.secondLine}
+        </h2>
+      </Reveal>
 
       <div
         className="
@@ -86,8 +89,15 @@ export default function ExperiencePhilosophy({
             min-[1440px]:gap-y-[72px]
           "
         >
-          {content.principles.map((principle) => (
-            <PrincipleCard key={principle.number} principle={principle} />
+          {content.principles.map((principle, index) => (
+            <Reveal
+              key={principle.number}
+              distance="small"
+              delay={160 + index * 70}
+              className="h-full"
+            >
+              <PrincipleCard principle={principle} />
+            </Reveal>
           ))}
 
           {/* Mobile image */}

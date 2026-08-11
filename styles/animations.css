@@ -1,4 +1,112 @@
 /* ==================================================
+   GLOBAL MOTION TOKENS
+================================================== */
+
+:root {
+  /* Duration */
+  --motion-duration-fast: 240ms;
+  --motion-duration-normal: 750ms;
+  --motion-duration-slow: 900ms;
+
+  /* Easing */
+  --motion-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-soft: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Distance */
+  --motion-distance-small: 12px;
+  --motion-distance-medium: 18px;
+  --motion-distance-large: 40px;
+}
+
+/* ==================================================
+   REVEAL
+================================================== */
+
+.reveal[data-reveal-ready="true"] {
+  transition:
+    opacity var(--reveal-duration) var(--motion-ease-standard)
+      var(--reveal-delay),
+    transform var(--reveal-duration) var(--motion-ease-standard)
+      var(--reveal-delay);
+}
+
+.reveal[data-reveal-ready="true"][data-reveal-visible="false"] {
+  opacity: 0.15;
+  will-change: opacity, transform;
+}
+
+.reveal[data-reveal-ready="true"][data-reveal-visible="false"][data-reveal-direction="up"] {
+  transform: translate3d(0, var(--reveal-distance), 0);
+}
+
+.reveal[data-reveal-ready="true"][data-reveal-visible="false"][data-reveal-direction="down"] {
+  transform: translate3d(0, calc(var(--reveal-distance) * -1), 0);
+}
+
+.reveal[data-reveal-ready="true"][data-reveal-visible="false"][data-reveal-direction="left"] {
+  transform: translate3d(var(--reveal-distance), 0, 0);
+}
+
+.reveal[data-reveal-ready="true"][data-reveal-visible="false"][data-reveal-direction="right"] {
+  transform: translate3d(calc(var(--reveal-distance) * -1), 0, 0);
+}
+
+.reveal[data-reveal-ready="true"][data-reveal-visible="false"][data-reveal-direction="none"] {
+  transform: none;
+}
+
+.reveal[data-reveal-ready="true"][data-reveal-visible="true"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+/* ==================================================
+   IMAGE REVEAL
+================================================== */
+
+.image-reveal {
+  overflow: hidden;
+}
+
+.image-reveal[data-reveal-ready="true"] {
+  transition:
+    opacity var(--motion-duration-slow) var(--motion-ease-soft)
+      var(--image-reveal-delay),
+    clip-path var(--motion-duration-slow) var(--motion-ease-soft)
+      var(--image-reveal-delay);
+}
+
+.image-reveal[data-reveal-ready="true"] .image-reveal__content {
+  transition: transform var(--motion-duration-slow)
+    var(--motion-ease-soft) var(--image-reveal-delay);
+}
+
+.image-reveal[data-reveal-ready="true"][data-image-reveal-visible="false"] {
+  opacity: 0;
+  clip-path: inset(0 0 12% 0);
+  will-change: opacity, clip-path;
+}
+
+.image-reveal[data-reveal-ready="true"][data-image-reveal-visible="false"]
+  .image-reveal__content {
+  transform: scale(1.03);
+  will-change: transform;
+}
+
+.image-reveal[data-reveal-ready="true"][data-image-reveal-visible="true"] {
+  opacity: 1;
+  clip-path: inset(0);
+  will-change: auto;
+}
+
+.image-reveal[data-reveal-ready="true"][data-image-reveal-visible="true"]
+  .image-reveal__content {
+  transform: scale(1);
+  will-change: auto;
+}
+
+/* ==================================================
    ROTATING WORD
 ================================================== */
 
@@ -51,6 +159,26 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal[data-reveal-ready="true"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .image-reveal[data-reveal-ready="true"] {
+    opacity: 1;
+    clip-path: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .image-reveal[data-reveal-ready="true"] .image-reveal__content {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
   .rotating-word__item {
     display: none;
     animation: none;

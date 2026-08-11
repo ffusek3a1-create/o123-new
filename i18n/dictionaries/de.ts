@@ -294,6 +294,85 @@ const de = {
       author: "Made by: @Pepiqity",
     },
   },
+
+  contactPage: {
+    metadata: {
+      title: "Kontakt | o123",
+      description:
+        "Lass uns über dein Projekt sprechen. Kontaktiere o123 per E-Mail, WhatsApp oder Teams oder vereinbare einen Gesprächstermin.",
+    },
+
+    hero: {
+      label: "Kontakt",
+      heading: "Bereit, etwas Unvergessliches zu schaffen?",
+      description:
+        "Du brauchst weder ein fertiges Konzept noch ein detailliertes Briefing. Eine Idee, ein Bedürfnis oder ein Ziel, über das du sprechen möchtest, reicht aus. Genau dort können wir anfangen.",
+    },
+
+    details: {
+      email: {
+        label: "E-Mail",
+        description: "Wir antworten normalerweise innerhalb von 24 Stunden.",
+      },
+
+      whatsapp: {
+        label: "WhatsApp",
+        description: "Der schnelle Weg, um über dein Projekt zu sprechen.",
+      },
+
+      teams: {
+        label: "Teams",
+        description: "Wir können uns auch online treffen.",
+      },
+
+      schedule: {
+        label: "Schedule a call",
+        value: "Wähle einen passenden Termin",
+        description: "Ein kurzes Gespräch über deine Idee.",
+      },
+
+      location: {
+        label: "Wrocław / Polen",
+        value: "Wir arbeiten weltweit.",
+      },
+    },
+
+    actions: {
+      label: "Wie können wir helfen?",
+
+      heading: {
+        firstLine: "Wähle den besten",
+        secondLine: "Weg, uns zu kontaktieren.",
+      },
+
+      quote: {
+        title: "Request a quote",
+        description:
+          "Du hast ein konkretes Projekt, einen Termin oder ein Budget? Schick uns die wichtigsten Informationen.",
+        cta: "Anfrage senden",
+      },
+
+      schedule: {
+        title: "Schedule a call",
+        description:
+          "Du möchtest lieber mit einem Gespräch beginnen? Wähle einen passenden Termin und lass uns sprechen.",
+        cta: "Gespräch vereinbaren",
+      },
+
+      chat: {
+        title: "Let's chat",
+        description:
+          "Du möchtest uns schnell erreichen? Schreib uns per WhatsApp, Teams oder E-Mail.",
+        cta: "Gespräch beginnen",
+      },
+    },
+
+    closing: {
+      firstLine: "Jedes Projekt beginnt",
+      secondLine: "mit einem Gespräch — nicht mit",
+      thirdLine: "einem fertigen Konzept.",
+    },
+  },
 } as const satisfies DeepWiden<typeof pl>;
 
 export default de;

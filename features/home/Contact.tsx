@@ -1,13 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 
-const contactLinkClassName =
-  "group type-button inline-flex items-center gap-4 whitespace-nowrap uppercase text-[var(--color-sand)]";
-
-const contactArrowClassName =
-  "inline-flex shrink-0 items-center justify-center leading-none transition-transform duration-300 ease-out group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none";
-
-const contactLabelClassName =
-  "relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100 motion-reduce:after:transition-none";
+import { useModal } from "@/components/modals/ModalProvider";
+import { Reveal } from "@/components/motion/Reveal";
 
 const socialLinkClassName =
   "group type-text type-lead inline-flex items-center gap-3 uppercase text-[var(--color-sand)]";
@@ -99,24 +96,142 @@ function AvailabilityStatus() {
   );
 }
 
-function ContactActions() {
+function ContactActions({
+  startProject,
+  letsChat,
+}: {
+  startProject: string;
+  letsChat: string;
+}) {
+  const { openModal } = useModal();
+
   return (
     <div className="flex flex-wrap items-center gap-x-8 gap-y-6">
-      <a href="#start-project" className={contactLinkClassName}>
-        <span aria-hidden="true" className={contactArrowClassName}>
+      <button
+        type="button"
+        onClick={() => openModal("quote")}
+        className="
+          group
+          inline-flex
+          items-center
+          gap-3
+          rounded-sm
+          type-button
+          uppercase
+          whitespace-nowrap
+          text-[var(--color-sand)]
+          focus-visible:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-[var(--color-sand)]
+          focus-visible:ring-offset-2
+          focus-visible:ring-offset-transparent
+        "
+      >
+        <span
+          aria-hidden="true"
+          className="
+            relative
+            top-px
+            inline-flex
+            shrink-0
+            items-center
+            justify-center
+            leading-none
+            transition-transform
+            [transition-duration:var(--motion-duration-fast)]
+            ease-out
+            group-hover:translate-x-1
+            motion-reduce:transition-none
+            motion-reduce:transform-none
+          "
+        >
           →
         </span>
 
-        <span className={contactLabelClassName}>Start a project</span>
-      </a>
+        <span
+          className="
+            relative
+            after:absolute
+            after:bottom-0
+            after:left-0
+            after:h-px
+            after:w-full
+            after:origin-left
+            after:scale-x-0
+            after:bg-current
+            after:transition-transform
+            after:[transition-duration:var(--motion-duration-fast)]
+            after:ease-out
+            group-hover:after:scale-x-100
+            motion-reduce:after:transition-none
+          "
+        >
+          {startProject}
+        </span>
+      </button>
 
-      <a href="#lets-chat" className={contactLinkClassName}>
-        <span aria-hidden="true" className={contactArrowClassName}>
+      <button
+        type="button"
+        onClick={() => openModal("quick-contact")}
+        className="
+          group
+          inline-flex
+          items-center
+          gap-3
+          rounded-sm
+          type-button
+          uppercase
+          whitespace-nowrap
+          text-[var(--color-sand)]
+          focus-visible:outline-none
+          focus-visible:ring-2
+          focus-visible:ring-[var(--color-sand)]
+          focus-visible:ring-offset-2
+          focus-visible:ring-offset-transparent
+        "
+      >
+        <span
+          aria-hidden="true"
+          className="
+            relative
+            top-px
+            inline-flex
+            shrink-0
+            items-center
+            justify-center
+            leading-none
+            transition-transform
+            [transition-duration:var(--motion-duration-fast)]
+            ease-out
+            group-hover:translate-x-1
+            motion-reduce:transition-none
+            motion-reduce:transform-none
+          "
+        >
           →
         </span>
 
-        <span className={contactLabelClassName}>Let&apos;s chat</span>
-      </a>
+        <span
+          className="
+            relative
+            after:absolute
+            after:bottom-0
+            after:left-0
+            after:h-px
+            after:w-full
+            after:origin-left
+            after:scale-x-0
+            after:bg-current
+            after:transition-transform
+            after:[transition-duration:var(--motion-duration-fast)]
+            after:ease-out
+            group-hover:after:scale-x-100
+            motion-reduce:after:transition-none
+          "
+        >
+          {letsChat}
+        </span>
+      </button>
     </div>
   );
 }
@@ -145,46 +260,64 @@ export default function Contact({ content }: ContactProps) {
       id="contact"
       aria-label={content.accessibility.sectionLabel}
       data-back-to-top-theme="sand"
-      className="relative"
+      className="relative bg-[#1C2A25]"
     >
       <div className="relative z-10">
         {/* Mobile main layout */}
         <div className="px-4 py-8 min-[834px]:hidden">
           <AvailabilityStatus />
 
-          <h2 className="mt-8 type-heading type-heading-xl">
-            {content.heading.firstLine}
-            <br />
-            {content.heading.secondLine}
-          </h2>
+          <Reveal distance="small" delay={60}>
+            <h2 className="mt-8 type-heading type-heading-xl">
+              {content.heading.firstLine}
+              <br />
+              {content.heading.secondLine}
+            </h2>
+          </Reveal>
 
-          <p className="mt-8 type-text type-body w-full max-w-[520px]">
-            {content.description}
-          </p>
+          <Reveal distance="small" delay={140}>
+            <p className="mt-8 type-text type-body w-full max-w-[520px]">
+              {content.description}
+            </p>
+          </Reveal>
 
-          <div className="mt-8">
-            <ContactActions />
-          </div>
+          <Reveal distance="small" delay={220} className="mt-8">
+            <ContactActions
+              startProject={content.actions.startProject}
+              letsChat={content.actions.letsChat}
+            />
+          </Reveal>
         </div>
 
         {/* Tablet main layout */}
         <div className="hidden px-8 pb-12 pt-12 min-[834px]:block min-[1440px]:hidden">
           <AvailabilityStatus />
 
-          <h2 className="mt-16 type-heading type-heading-xl">
-            {content.heading.firstLine}
-            <br />
-            {content.heading.secondLine}
-          </h2>
+          <Reveal distance="small" delay={60}>
+            <h2 className="mt-16 type-heading type-heading-xl">
+              {content.heading.firstLine}
+              <br />
+              {content.heading.secondLine}
+            </h2>
+          </Reveal>
 
           <div className="mt-16 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-8">
-            <p className="type-text type-body w-full max-w-[420px]">
-              {content.description}
-            </p>
+            <Reveal distance="small" delay={140}>
+              <p className="type-text type-body w-full max-w-[420px]">
+                {content.description}
+              </p>
+            </Reveal>
 
-            <div className="justify-self-end">
-              <ContactActions />
-            </div>
+            <Reveal
+              distance="small"
+              delay={220}
+              className="justify-self-end"
+            >
+              <ContactActions
+                startProject={content.actions.startProject}
+                letsChat={content.actions.letsChat}
+              />
+            </Reveal>
           </div>
         </div>
 
@@ -195,20 +328,31 @@ export default function Contact({ content }: ContactProps) {
           </div>
 
           <div className="col-span-2 pl-20">
-            <h2 className="type-heading type-heading-xl">
-              {content.heading.firstLine}
-              <br />
-              {content.heading.secondLine}
-            </h2>
+            <Reveal distance="small" delay={60}>
+              <h2 className="type-heading type-heading-xl">
+                {content.heading.firstLine}
+                <br />
+                {content.heading.secondLine}
+              </h2>
+            </Reveal>
 
             <div className="mt-[144px] grid grid-cols-[minmax(0,1fr)_auto] items-center gap-8 pr-12">
-              <p className="type-text type-body w-full max-w-[360px]">
-                {content.description}
-              </p>
+              <Reveal distance="small" delay={140}>
+                <p className="type-text type-body w-full max-w-[360px]">
+                  {content.description}
+                </p>
+              </Reveal>
 
-              <div className="justify-self-end">
-                <ContactActions />
-              </div>
+              <Reveal
+                distance="small"
+                delay={220}
+                className="justify-self-end"
+              >
+                <ContactActions
+                  startProject={content.actions.startProject}
+                  letsChat={content.actions.letsChat}
+                />
+              </Reveal>
             </div>
           </div>
         </div>
@@ -285,13 +429,21 @@ export default function Contact({ content }: ContactProps) {
                 </p>
 
                 <div className="flex items-center gap-1 type-text type-caption min-[834px]:justify-self-center">
-                  <a href="/regulamin">{content.footer.terms}</a>
+                  <Link
+                    href="/regulamin"
+                    className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                  >
+                    {content.footer.terms}
+                  </Link>
 
                   <span aria-hidden="true">,</span>
 
-                  <a href="/polityka-prywatnosci">
+                  <Link
+                    href="/polityka-prywatnosci"
+                    className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                  >
                     {content.footer.privacyPolicy}
-                  </a>
+                  </Link>
                 </div>
 
                 <p className="type-text type-caption min-[834px]:justify-self-end">

@@ -1,8 +1,11 @@
 import Image from "next/image";
 
+import ButtonLink from "@/components/ui/ButtonLink";
 import { preventPolishOrphans } from "@/lib/preventPolishOrphans";
 
 import type { ServiceCategory } from "../data";
+
+import { ImageReveal } from "./motion/ImageReveal";
 
 type AccordionPanelProps = {
   category: ServiceCategory;
@@ -19,39 +22,24 @@ export default function AccordionPanel({ category }: AccordionPanelProps) {
             {preventPolishOrphans(category.description)}
           </p>
 
-          <a
+          <ButtonLink
             href="#contact"
-            className="group inline-flex self-start items-center gap-3 type-button uppercase text-[var(--color-burgundy)] min-[834px]:mt-16"
+            className="self-start text-[var(--color-burgundy)] min-[834px]:mt-16"
           >
-            <span
-              aria-hidden="true"
-              className="relative top-px inline-flex shrink-0 items-center justify-center leading-none transition-transform duration-300 ease-out group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none"
-            >
-              →
-            </span>
-
-            <span className="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100 motion-reduce:after:transition-none">
-              Discover more
-            </span>
-          </a>
+            Discover more
+          </ButtonLink>
         </div>
 
         <div className="w-full min-[834px]:grid min-[834px]:h-full min-[834px]:grid-cols-[repeat(2,minmax(0,128px))] min-[834px]:justify-end min-[834px]:gap-12 min-[1440px]:grid-cols-2">
           {imageSlots.map((image, index) => (
-            <div
+            <ImageReveal
               key={`${category.number}-image-${index}`}
+              delay={index * 80}
               className={`
-                image-frame
                 relative
                 aspect-[4/3]
                 w-full
-                overflow-hidden
                 bg-[var(--color-burgundy)]/10
-                after:pointer-events-none
-                after:absolute
-                after:inset-0
-                after:content-['']
-                after:shadow-[inset_0_0_32px_rgba(58,15,23,0.7)]
                 ${index === 1 ? "hidden min-[834px]:block" : "block"}
                 min-[834px]:h-full
                 min-[834px]:min-h-[360px]
@@ -61,16 +49,18 @@ export default function AccordionPanel({ category }: AccordionPanelProps) {
                 min-[1440px]:aspect-[3/4]
               `}
             >
-              {image && (
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 833px) calc(100vw - 80px), (max-width: 1439px) 128px, 25vw"
-                  className="object-cover"
-                />
-              )}
-            </div>
+              <div className="image-frame h-full w-full after:pointer-events-none after:absolute after:inset-0 after:content-[''] after:shadow-[inset_0_0_32px_rgba(58,15,23,0.7)]">
+                {image && (
+                  <Image
+                    src={image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 833px) calc(100vw - 80px), (max-width: 1439px) 128px, 25vw"
+                    className="object-cover"
+                  />
+                )}
+              </div>
+            </ImageReveal>
           ))}
         </div>
       </div>

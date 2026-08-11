@@ -52,24 +52,35 @@ export default function AnimatedWord({
     const currentWord = words[wordIndex];
 
     if (isPaused) {
+      let deleteTimer: number | undefined;
+
       const pauseTimer = window.setTimeout(() => {
         setShowCursor(true);
-        setIsPaused(false);
 
-        window.setTimeout(() => {
-            setIsDeleting(true);
+        deleteTimer = window.setTimeout(() => {
+          setIsDeleting(true);
+          setIsPaused(false);
         }, 220);
       }, pauseDuration);
 
       return () => {
         window.clearTimeout(pauseTimer);
+
+        if (deleteTimer !== undefined) {
+          window.clearTimeout(deleteTimer);
+        }
       };
     }
 
     if (!isDeleting && visibleText === currentWord) {
+      const pauseStartTimer = window.setTimeout(() => {
         setShowCursor(false);
         setIsPaused(true);
-        return;
+      }, 0);
+
+      return () => {
+        window.clearTimeout(pauseStartTimer);
+      };
     }
 
     if (isDeleting && visibleText === "") {
@@ -117,9 +128,7 @@ export default function AnimatedWord({
   }
 
   const displayedText = reduceMotion ? words[0] : visibleText;
-  const isAnimating =
-    !reduceMotion &&
-    showCursor;
+  const isAnimating = !reduceMotion && showCursor;
 
   return (
     <span

@@ -311,6 +311,85 @@ const en = {
       author: "Made by: @Pepiqity",
     },
   },
+
+  contactPage: {
+    metadata: {
+      title: "Contact | o123",
+      description:
+        "Let's talk about your project. Contact o123 by email, WhatsApp or Teams, or schedule a call.",
+    },
+
+    hero: {
+      label: "Contact",
+      heading: "Ready to create something unforgettable?",
+      description:
+        "You don't need a finished scenario or a detailed brief. An idea, a need or a goal you'd like to talk about is enough. That's where we can start.",
+    },
+
+    details: {
+      email: {
+        label: "E-mail",
+        description: "We usually reply within 24 hours.",
+      },
+
+      whatsapp: {
+        label: "WhatsApp",
+        description: "A quick way to get in touch about your project.",
+      },
+
+      teams: {
+        label: "Teams",
+        description: "We can also meet online.",
+      },
+
+      schedule: {
+        label: "Schedule a call",
+        value: "Choose a convenient time",
+        description: "A short conversation about your idea.",
+      },
+
+      location: {
+        label: "Wrocław / Poland",
+        value: "We work globally.",
+      },
+    },
+
+    actions: {
+      label: "How can we help?",
+
+      heading: {
+        firstLine: "Choose the best",
+        secondLine: "way to get in touch.",
+      },
+
+      quote: {
+        title: "Request a quote",
+        description:
+          "Have a specific project, deadline or budget? Send us a few essential details.",
+        cta: "Send an enquiry",
+      },
+
+      schedule: {
+        title: "Schedule a call",
+        description:
+          "Prefer to start with a conversation? Choose a convenient time and let's talk.",
+        cta: "Schedule a call",
+      },
+
+      chat: {
+        title: "Let's chat",
+        description:
+          "Need to get in touch quickly? Message us via WhatsApp, Teams or email.",
+        cta: "Start a conversation",
+      },
+    },
+
+    closing: {
+      firstLine: "Every project starts",
+      secondLine: "with a conversation — not",
+      thirdLine: "a ready-made scenario.",
+    },
+  },
 } as const satisfies DeepWiden<typeof pl>;
 
 export default en;

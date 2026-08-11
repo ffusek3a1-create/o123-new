@@ -36,7 +36,24 @@ export default function AccordionItem({
           onClick={onClick}
           aria-expanded={isOpen}
           aria-controls={panelId}
-          className={`flex w-full items-center px-[var(--page-gutter)] py-10 text-left transition-colors duration-300 min-[1440px]:px-12 min-[1440px]:py-12 ${headerStyles}`}
+          className={`
+            flex
+            w-full
+            items-center
+            px-[var(--page-gutter)]
+            py-10
+            text-left
+            transition-colors
+            duration-300
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-inset
+            focus-visible:ring-current
+            motion-reduce:transition-none
+            min-[1440px]:px-12
+            min-[1440px]:py-12
+            ${headerStyles}
+          `}
         >
           <span className="type-text type-caption">{category.number}</span>
 

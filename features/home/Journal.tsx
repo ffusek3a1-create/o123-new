@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+import { Reveal } from "@/components/motion/Reveal";
+import ButtonLink from "@/components/ui/ButtonLink";
+
 const articleTechnicalData = {
   dateTime: "2026-08-16",
   image: "/images/article_1.png",
@@ -10,15 +13,6 @@ const captionClassName =
   "type-caption text-[var(--color-sand)] opacity-[var(--font-caption-opacity)]";
 
 const borderClassName = "border-[var(--color-sand)]/40";
-
-const journalLinkClassName =
-  "group type-button inline-flex items-center gap-3 uppercase text-[var(--color-sand)]";
-
-const journalArrowClassName =
-  "relative top-px inline-flex shrink-0 items-center justify-center leading-none transition-transform duration-300 ease-out group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none";
-
-const journalLabelClassName =
-  "relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100 motion-reduce:after:transition-none";
 
 type JournalContent = {
   introductionHeading: {
@@ -61,7 +55,6 @@ export default function Journal({ content }: JournalProps) {
   };
 
   const currentArticleNumber = String(1).padStart(2, "0");
-
   const totalArticlesNumber = String(1).padStart(2, "0");
 
   return (
@@ -69,7 +62,7 @@ export default function Journal({ content }: JournalProps) {
       id="journal"
       aria-label="Journal"
       data-back-to-top-theme="sand"
-      className="relative"
+      className="relative bg-[#1C2A25]"
     >
       {/* Mobile / tablet top captions */}
       <div
@@ -84,29 +77,31 @@ export default function Journal({ content }: JournalProps) {
         {/* Mobile heading */}
         <header className={`border-b ${borderClassName}`}>
           <div className="px-4 pb-12 pt-12">
-            <h2 className="type-heading type-heading-xl">Journal</h2>
+            <Reveal distance="small" delay={60}>
+              <h2 className="type-heading type-heading-xl">Journal</h2>
+            </Reveal>
           </div>
         </header>
 
         {/* Mobile introduction */}
         <div className={`border-b ${borderClassName}`}>
           <div className="flex flex-col px-4 pb-4 pt-4">
-            <h3 className="type-heading type-heading-lg">
-              {content.introductionHeading.firstLine}
-              <br />
-              {content.introductionHeading.secondLine}
-            </h3>
+            <Reveal distance="small" delay={80}>
+              <h3 className="type-heading type-heading-lg">
+                {content.introductionHeading.firstLine}
+                <br />
+                {content.introductionHeading.secondLine}
+              </h3>
+            </Reveal>
 
-            <a
-              href="#contact"
-              className={`mt-8 self-start ${journalLinkClassName}`}
-            >
-              <span aria-hidden="true" className={journalArrowClassName}>
-                →
-              </span>
-
-              <span className={journalLabelClassName}>Get in touch</span>
-            </a>
+            <Reveal distance="small" delay={160}>
+              <ButtonLink
+                href="#contact"
+                className="mt-8 self-start text-[var(--color-sand)]"
+              >
+                Get in touch
+              </ButtonLink>
+            </Reveal>
           </div>
         </div>
 
@@ -124,29 +119,29 @@ export default function Journal({ content }: JournalProps) {
                 />
               </div>
 
-              <h3 className="mt-2 type-text type-lead">
-                {currentArticle.title}
-              </h3>
+              <Reveal distance="small" delay={80}>
+                <h3 className="mt-2 type-text type-lead">
+                  {currentArticle.title}
+                </h3>
+              </Reveal>
 
-              <time
-                dateTime={currentArticle.dateTime}
-                className={`mt-2 block uppercase ${captionClassName}`}
-              >
-                {currentArticle.date}
-              </time>
+              <Reveal direction="none" duration="fast" delay={140}>
+                <time
+                  dateTime={currentArticle.dateTime}
+                  className={`mt-2 block uppercase ${captionClassName}`}
+                >
+                  {currentArticle.date}
+                </time>
+              </Reveal>
 
-              <a
-                href={currentArticle.href}
-                className={`mt-8 ${journalLinkClassName}`}
-              >
-                <span aria-hidden="true" className={journalArrowClassName}>
-                  →
-                </span>
-
-                <span className={journalLabelClassName}>
+              <Reveal distance="small" delay={200}>
+                <ButtonLink
+                  href={currentArticle.href}
+                  className="mt-8 text-[var(--color-sand)]"
+                >
                   {content.readMoreLabel}
-                </span>
-              </a>
+                </ButtonLink>
+              </Reveal>
             </div>
           </div>
 
@@ -183,7 +178,9 @@ export default function Journal({ content }: JournalProps) {
 
         {/* Mobile closing statement */}
         <div className="flex min-h-[184px] items-center justify-center px-4 text-center">
-          <p className="type-text type-body">{content.closingStatement}</p>
+          <Reveal distance="small" delay={80}>
+            <p className="type-text type-body">{content.closingStatement}</p>
+          </Reveal>
         </div>
       </div>
 
@@ -193,7 +190,9 @@ export default function Journal({ content }: JournalProps) {
         <header
           className={`flex min-h-[152px] items-center border-b px-8 ${borderClassName}`}
         >
-          <h2 className="type-heading type-heading-xl">Journal</h2>
+          <Reveal distance="small" delay={60}>
+            <h2 className="type-heading type-heading-xl">Journal</h2>
+          </Reveal>
         </header>
 
         {/* Tablet content grid */}
@@ -204,42 +203,42 @@ export default function Journal({ content }: JournalProps) {
           <div
             className={`flex min-h-[250px] flex-col justify-between border-b border-r p-8 ${borderClassName}`}
           >
-            <h3 className="type-heading type-heading-lg">
-              {content.introductionHeading.firstLine}
-              <br />
-              {content.introductionHeading.secondLine}
-            </h3>
+            <Reveal distance="small" delay={80}>
+              <h3 className="type-heading type-heading-lg">
+                {content.introductionHeading.firstLine}
+                <br />
+                {content.introductionHeading.secondLine}
+              </h3>
+            </Reveal>
 
-            <a href="#about" className={journalLinkClassName}>
-              <span aria-hidden="true" className={journalArrowClassName}>
-                →
-              </span>
-
-              <span className={journalLabelClassName}>
-                {content.aboutLabel}
-              </span>
-            </a>
+            <ButtonLink
+              href="#about"
+              className="text-[var(--color-sand)]"
+            >
+              {content.aboutLabel}
+            </ButtonLink>
           </div>
 
           {/* Row 2 / Column 1 */}
           <div
             className={`flex min-h-[250px] flex-col justify-between border-r p-8 ${borderClassName}`}
           >
-            <p className="type-text type-lead-lg uppercase">
-              {content.identity.brand}
-              <br />
-              {content.identity.headquarters}
-              <br />
-              {content.identity.reach}
-            </p>
+            <Reveal distance="small" delay={140}>
+              <p className="type-text type-lead-lg uppercase">
+                {content.identity.brand}
+                <br />
+                {content.identity.headquarters}
+                <br />
+                {content.identity.reach}
+              </p>
+            </Reveal>
 
-            <a href="#contact" className={journalLinkClassName}>
-              <span aria-hidden="true" className={journalArrowClassName}>
-                →
-              </span>
-
-              <span className={journalLabelClassName}>Get in touch</span>
-            </a>
+            <ButtonLink
+              href="#contact"
+              className="text-[var(--color-sand)]"
+            >
+              Get in touch
+            </ButtonLink>
           </div>
 
           {/* Column 2 / spans both rows */}
@@ -257,29 +256,29 @@ export default function Journal({ content }: JournalProps) {
                 />
               </div>
 
-              <h3 className="mt-3 type-text type-lead">
-                {currentArticle.title}
-              </h3>
+              <Reveal distance="small" delay={100}>
+                <h3 className="mt-3 type-text type-lead">
+                  {currentArticle.title}
+                </h3>
+              </Reveal>
 
-              <time
-                dateTime={currentArticle.dateTime}
-                className={`mt-3 uppercase ${captionClassName}`}
-              >
-                {currentArticle.date}
-              </time>
+              <Reveal direction="none" duration="fast" delay={160}>
+                <time
+                  dateTime={currentArticle.dateTime}
+                  className={`mt-3 uppercase ${captionClassName}`}
+                >
+                  {currentArticle.date}
+                </time>
+              </Reveal>
 
-              <a
-                href={currentArticle.href}
-                className={`mt-auto pt-8 ${journalLinkClassName}`}
-              >
-                <span aria-hidden="true" className={journalArrowClassName}>
-                  →
-                </span>
-
-                <span className={journalLabelClassName}>
+              <Reveal distance="small" delay={220} className="mt-auto pt-8">
+                <ButtonLink
+                  href={currentArticle.href}
+                  className="text-[var(--color-sand)]"
+                >
                   {content.readMoreLabel}
-                </span>
-              </a>
+                </ButtonLink>
+              </Reveal>
             </div>
 
             <div className="flex min-h-[74px] items-center justify-between px-4">
@@ -315,9 +314,11 @@ export default function Journal({ content }: JournalProps) {
         <div
           className={`flex min-h-[160px] items-center justify-center border-b px-8 text-center ${borderClassName}`}
         >
-          <p className="type-text type-body max-w-[700px]">
-            {content.closingStatement}
-          </p>
+          <Reveal distance="small" delay={80}>
+            <p className="type-text type-body max-w-[700px]">
+              {content.closingStatement}
+            </p>
+          </Reveal>
         </div>
       </div>
 
@@ -326,7 +327,9 @@ export default function Journal({ content }: JournalProps) {
         <header
           className={`flex min-h-[216px] items-center border-b px-12 ${borderClassName}`}
         >
-          <h2 className="type-heading type-heading-xl">Journal</h2>
+          <Reveal distance="small" delay={60}>
+            <h2 className="type-heading type-heading-xl">Journal</h2>
+          </Reveal>
         </header>
 
         <div
@@ -336,32 +339,33 @@ export default function Journal({ content }: JournalProps) {
           <div
             className={`flex flex-col justify-between border-r p-4 ${borderClassName}`}
           >
-            <h3 className="type-heading type-heading-lg">
-              {content.introductionHeading.firstLine}
-              <br />
-              {content.introductionHeading.secondLine}
-            </h3>
+            <Reveal distance="small" delay={100}>
+              <h3 className="type-heading type-heading-lg">
+                {content.introductionHeading.firstLine}
+                <br />
+                {content.introductionHeading.secondLine}
+              </h3>
+            </Reveal>
 
-            <a href="#about" className={journalLinkClassName}>
-              <span aria-hidden="true" className={journalArrowClassName}>
-                →
-              </span>
-
-              <span className={journalLabelClassName}>
-                {content.aboutLabel}
-              </span>
-            </a>
+            <ButtonLink
+              href="#about"
+              className="text-[var(--color-sand)]"
+            >
+              {content.aboutLabel}
+            </ButtonLink>
           </div>
 
           {/* Brand identity panel */}
           <div className={`flex flex-col border-r p-4 ${borderClassName}`}>
-            <p className="type-text type-lead-lg uppercase">
-              {content.identity.brand}
-              <br />
-              {content.identity.headquarters}
-              <br />
-              {content.identity.reach}
-            </p>
+            <Reveal distance="small" delay={160}>
+              <p className="type-text type-lead-lg uppercase">
+                {content.identity.brand}
+                <br />
+                {content.identity.headquarters}
+                <br />
+                {content.identity.reach}
+              </p>
+            </Reveal>
           </div>
 
           {/* Featured article panel */}
@@ -379,7 +383,11 @@ export default function Journal({ content }: JournalProps) {
                 />
               </div>
 
-              <div className="flex min-w-0 flex-col">
+              <Reveal
+                distance="small"
+                delay={220}
+                className="flex min-w-0 flex-col"
+              >
                 <h3 className="type-text type-lead-lg">
                   {currentArticle.title}
                 </h3>
@@ -391,19 +399,13 @@ export default function Journal({ content }: JournalProps) {
                   {currentArticle.date}
                 </time>
 
-                <a
+                <ButtonLink
                   href={currentArticle.href}
-                  className={`mt-auto ${journalLinkClassName}`}
+                  className="mt-auto text-[var(--color-sand)]"
                 >
-                  <span aria-hidden="true" className={journalArrowClassName}>
-                    →
-                  </span>
-
-                  <span className={journalLabelClassName}>
-                    {content.readMoreLabel}
-                  </span>
-                </a>
-              </div>
+                  {content.readMoreLabel}
+                </ButtonLink>
+              </Reveal>
             </div>
 
             <div className="flex min-h-[96px] items-center justify-between px-4">
@@ -437,7 +439,9 @@ export default function Journal({ content }: JournalProps) {
 
         {/* Closing statement */}
         <div className="flex min-h-[200px] items-center justify-center text-center">
-          <p className="type-text type-body">{content.closingStatement}</p>
+          <Reveal distance="small" delay={80}>
+            <p className="type-text type-body">{content.closingStatement}</p>
+          </Reveal>
         </div>
       </div>
     </section>

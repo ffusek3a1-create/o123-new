@@ -295,6 +295,85 @@ const cs = {
       author: "Made by: @Pepiqity",
     },
   },
+
+  contactPage: {
+    metadata: {
+      title: "Kontakt | o123",
+      description:
+        "Promluvme si o vašem projektu. Kontaktujte o123 e-mailem, přes WhatsApp nebo Teams, případně si domluvte hovor.",
+    },
+
+    hero: {
+      label: "Kontakt",
+      heading: "Jste připraveni vytvořit něco nezapomenutelného?",
+      description:
+        "Nemusíte mít hotový scénář ani podrobný brief. Stačí nápad, potřeba nebo cíl, o kterém chcete mluvit. Právě tam můžeme začít.",
+    },
+
+    details: {
+      email: {
+        label: "E-mail",
+        description: "Obvykle odpovídáme do 24 hodin.",
+      },
+
+      whatsapp: {
+        label: "WhatsApp",
+        description: "Rychlý způsob, jak se spojit ohledně projektu.",
+      },
+
+      teams: {
+        label: "Teams",
+        description: "Můžeme se setkat také online.",
+      },
+
+      schedule: {
+        label: "Schedule a call",
+        value: "Vyberte si vhodný termín",
+        description: "Krátký rozhovor o vašem nápadu.",
+      },
+
+      location: {
+        label: "Wrocław / Polsko",
+        value: "Působíme po celém světě.",
+      },
+    },
+
+    actions: {
+      label: "Jak vám můžeme pomoci?",
+
+      heading: {
+        firstLine: "Vyberte nejlepší",
+        secondLine: "způsob, jak se spojit.",
+      },
+
+      quote: {
+        title: "Request a quote",
+        description:
+          "Máte konkrétní projekt, termín nebo rozpočet? Pošlete nám několik základních informací.",
+        cta: "Odeslat poptávku",
+      },
+
+      schedule: {
+        title: "Schedule a call",
+        description:
+          "Chcete začít rozhovorem? Vyberte si vhodný termín a promluvme si.",
+        cta: "Domluvit hovor",
+      },
+
+      chat: {
+        title: "Let's chat",
+        description:
+          "Potřebujete rychlý kontakt? Napište nám přes WhatsApp, Teams nebo e-mail.",
+        cta: "Začít rozhovor",
+      },
+    },
+
+    closing: {
+      firstLine: "Každý projekt začínáme",
+      secondLine: "rozhovorem — ne hotovým",
+      thirdLine: "scénářem.",
+    },
+  },
 } as const satisfies DeepWiden<typeof pl>;
 
 export default cs;

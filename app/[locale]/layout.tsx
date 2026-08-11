@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 
 import Navbar from "@/components/layout/Navbar";
+import { ModalProvider } from "@/components/modals/ModalProvider";
+import ModalRoot from "@/components/modals/ModalRoot";
 import { getDictionary } from "@/i18n/getDictionary";
 import { isLocale } from "@/i18n/config";
 
@@ -26,10 +28,12 @@ export default async function LocaleLayout({
   const dictionary = await getDictionary(locale);
 
   return (
-    <>
+    <ModalProvider>
       <Navbar menuDescriptions={dictionary.navigation.menuDescriptions} />
 
       {children}
-    </>
+
+      <ModalRoot />
+    </ModalProvider>
   );
 }

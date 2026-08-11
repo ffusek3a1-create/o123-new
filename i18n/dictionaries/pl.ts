@@ -278,6 +278,85 @@ const pl = {
       author: "Made by: @Pepiqity",
     },
   },
+
+  contactPage: {
+    metadata: {
+      title: "Contact | o123",
+      description:
+        "Porozmawiajmy o Twoim projekcie. Skontaktuj się z o123 przez e-mail, WhatsApp, Teams lub umów rozmowę.",
+    },
+
+    hero: {
+      label: "Contact",
+      heading: "Gotowy na stworzenie czegoś niezapomnianego?",
+      description:
+        "Nie musisz mieć gotowego scenariusza ani szczegółowego briefu. Wystarczy pomysł, potrzeba albo cel, o którym chcesz porozmawiać. Od tego możemy zacząć.",
+    },
+
+    details: {
+      email: {
+        label: "E-mail",
+        description: "Odpowiadamy zazwyczaj w ciągu 24h.",
+      },
+
+      whatsapp: {
+        label: "WhatsApp",
+        description: "Szybki kontakt w sprawie projektu.",
+      },
+
+      teams: {
+        label: "Teams",
+        description: "Możemy spotkać się również online.",
+      },
+
+      schedule: {
+        label: "Schedule a call",
+        value: "Wybierz dogodny termin",
+        description: "Krótka rozmowa o Twoim pomyśle.",
+      },
+
+      location: {
+        label: "Wrocław / Polska",
+        value: "Działamy globalnie.",
+      },
+    },
+
+    actions: {
+      label: "Jak możemy pomóc?",
+
+      heading: {
+        firstLine: "Wybierz najlepszy",
+        secondLine: "sposób kontaktu.",
+      },
+
+      quote: {
+        title: "Request a quote",
+        description:
+          "Masz konkretny projekt, termin lub budżet? Wyślij nam kilka podstawowych informacji.",
+        cta: "Prześlij zapytanie",
+      },
+
+      schedule: {
+        title: "Schedule a call",
+        description:
+          "Wolisz zacząć od rozmowy? Wybierz dogodny termin i porozmawiajmy.",
+        cta: "Umów rozmowę",
+      },
+
+      chat: {
+        title: "Let's chat",
+        description:
+          "Potrzebujesz szybkiego kontaktu? Napisz przez WhatsApp, Teams lub e-mail.",
+        cta: "Zacznij rozmowę",
+      },
+    },
+
+    closing: {
+      firstLine: "Każdy projekt zaczynamy",
+      secondLine: "od rozmowy — nie od gotowego",
+      thirdLine: "scenariusza.",
+    },
+  },
 } as const;
 
 export default pl;
