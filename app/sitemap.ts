@@ -6,7 +6,7 @@ import {
   type Locale,
 } from "@/i18n/config";
 
-const baseUrl = "https://o123.pl";
+const baseUrl = "https://www.o123.pl";
 
 const staticRoutes = [
   "",
