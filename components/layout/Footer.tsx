@@ -110,10 +110,10 @@ export default function Footer({
             </p>
 
             <a
-              href="mailto:o123@event.pl"
+              href="mailto:hello@o123.pl"
               className={`mt-4 type-text type-body ${footerLinkClassName}`}
             >
-              o123@event.pl
+              hello@o123.pl
             </a>
           </div>
 

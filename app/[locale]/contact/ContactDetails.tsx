@@ -111,7 +111,7 @@ export default function ContactDetails({
         "
       >
         <a
-          href="mailto:o123@event.pl"
+          href="mailto:hello@o123.pl"
           className={interactiveRowClassName}
         >
           <ContactLabel interactive>
@@ -119,7 +119,7 @@ export default function ContactDetails({
           </ContactLabel>
 
           <p className="mt-4 type-text type-lead">
-            o123@event.pl
+            hello@o123.pl
           </p>
 
           <p className="mt-2 type-text type-body opacity-60">
