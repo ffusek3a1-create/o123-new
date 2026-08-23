@@ -69,6 +69,11 @@
   overflow: hidden;
 }
 
+.image-reveal__content {
+  width: 100%;
+  height: 100%;
+}
+
 .image-reveal[data-reveal-ready="true"] {
   transition:
     opacity var(--motion-duration-slow) var(--motion-ease-soft)

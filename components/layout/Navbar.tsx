@@ -37,6 +37,7 @@ function getCurrentLocale(pathname: string): Locale {
 
 export default function Navbar({ menuDescriptions }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNotFoundPage, setIsNotFoundPage] = useState(false);
 
   const { openModal } = useModal();
 
@@ -46,6 +47,24 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
   const journalPath = `/${currentLocale}/journal`;
   const isJournalRoute =
     pathname === journalPath || pathname.startsWith(`${journalPath}/`);
+
+  const aboutPath = `/${currentLocale}/about`;
+  const isAboutRoute = pathname === aboutPath;
+
+  useEffect(() => {
+    function syncNotFoundState() {
+      setIsNotFoundPage(
+        document.documentElement.dataset.notFoundPage === "true",
+      );
+    }
+
+    syncNotFoundState();
+    window.addEventListener("o123:not-found-change", syncNotFoundState);
+
+    return () => {
+      window.removeEventListener("o123:not-found-change", syncNotFoundState);
+    };
+  }, [pathname]);
 
   const openMenuButtonRef = useRef<HTMLButtonElement>(null);
   const menuDialogRef = useRef<HTMLDivElement>(null);
@@ -60,7 +79,7 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
     {
       label: "ABOUT",
       description: menuDescriptions.about,
-      href: `/${currentLocale}#about`,
+      href: `/${currentLocale}/about`,
     },
     {
       label: "JOURNAL",
@@ -76,6 +95,20 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
 
   const closeMenu = useCallback((restoreFocus = true) => {
     shouldRestoreFocusRef.current = restoreFocus;
+
+    const activeElement = document.activeElement;
+
+    if (
+      activeElement instanceof HTMLElement &&
+      menuDialogRef.current?.contains(activeElement)
+    ) {
+      if (restoreFocus) {
+        openMenuButtonRef.current?.focus();
+      } else {
+        activeElement.blur();
+      }
+    }
+
     setIsMenuOpen(false);
   }, []);
 
@@ -172,10 +205,17 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
     <>
       <header
         className={[
-          "relative z-40 border-b border-[var(--color-sand)]/35 py-12 text-[var(--color-sand)]",
-          isJournalRoute
-            ? "bg-[#1C2A25]"
-            : "bg-[var(--color-burgundy)]",
+          "z-40 border-b border-[var(--color-sand)]/35 py-12 text-[var(--color-sand)]",
+          isAboutRoute
+            ? "absolute inset-x-0 top-0 bg-transparent"
+            : "relative",
+          isAboutRoute
+            ? "bg-transparent"
+            : isNotFoundPage
+              ? "bg-[var(--color-burgundy)]"
+              : isJournalRoute
+                ? "bg-[#1C2A25]"
+                : "bg-[var(--color-burgundy)]",
         ].join(" ")}
       >
         <div className="px-[var(--page-gutter)]">
@@ -193,55 +233,21 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
                 <li className="hidden md:block">
                   <button
                     type="button"
-                    onClick={() => openModal("schedule")}
-                    className="
-                      group
-                      inline-flex
-                      items-center
-                      gap-3
-                      type-button
-                      text-[var(--color-sand)]
-                    "
+                    onClick={() =>
+                      openModal("schedule", {
+                        ctaLocation: "navbar",
+                      })
+                    }
+                    className="group inline-flex items-center gap-3 type-button text-[var(--color-sand)]"
                   >
                     <span
                       aria-hidden="true"
-                      className="
-                        relative
-                        top-px
-                        inline-flex
-                        shrink-0
-                        items-center
-                        justify-center
-                        leading-none
-                        transition-transform
-                        duration-300
-                        ease-out
-                        group-hover:translate-x-1
-                        motion-reduce:transform-none
-                        motion-reduce:transition-none
-                      "
+                      className="relative top-px inline-flex shrink-0 items-center justify-center leading-none transition-transform duration-300 ease-out group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none"
                     >
                       →
                     </span>
 
-                    <span
-                      className="
-                        relative
-                        after:absolute
-                        after:bottom-0
-                        after:left-0
-                        after:h-px
-                        after:w-full
-                        after:origin-left
-                        after:scale-x-0
-                        after:bg-current
-                        after:transition-transform
-                        after:duration-300
-                        after:ease-out
-                        group-hover:after:scale-x-100
-                        motion-reduce:after:transition-none
-                      "
-                    >
+                    <span className="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100 motion-reduce:after:transition-none">
                       Schedule a call
                     </span>
                   </button>
@@ -250,55 +256,21 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
                 <li>
                   <button
                     type="button"
-                    onClick={() => openModal("quote")}
-                    className="
-                      group
-                      inline-flex
-                      items-center
-                      gap-3
-                      type-button
-                      text-[var(--color-sand)]
-                    "
+                    onClick={() =>
+                      openModal("quote", {
+                        ctaLocation: "navbar",
+                      })
+                    }
+                    className="group inline-flex items-center gap-3 type-button text-[var(--color-sand)]"
                   >
                     <span
                       aria-hidden="true"
-                      className="
-                        relative
-                        top-px
-                        inline-flex
-                        shrink-0
-                        items-center
-                        justify-center
-                        leading-none
-                        transition-transform
-                        duration-300
-                        ease-out
-                        group-hover:translate-x-1
-                        motion-reduce:transform-none
-                        motion-reduce:transition-none
-                      "
+                      className="relative top-px inline-flex shrink-0 items-center justify-center leading-none transition-transform duration-300 ease-out group-hover:translate-x-1 motion-reduce:transform-none motion-reduce:transition-none"
                     >
                       →
                     </span>
 
-                    <span
-                      className="
-                        relative
-                        after:absolute
-                        after:bottom-0
-                        after:left-0
-                        after:h-px
-                        after:w-full
-                        after:origin-left
-                        after:scale-x-0
-                        after:bg-current
-                        after:transition-transform
-                        after:duration-300
-                        after:ease-out
-                        group-hover:after:scale-x-100
-                        motion-reduce:after:transition-none
-                      "
-                    >
+                    <span className="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100 motion-reduce:after:transition-none">
                       Request a quote
                     </span>
                   </button>

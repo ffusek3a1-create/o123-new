@@ -2,8 +2,11 @@
 
 import {
   useEffect,
+  useRef,
   useState,
 } from "react";
+
+import { trackEvent } from "@/lib/analytics";
 
 import ModalShell from "./ModalShell";
 import { useModal } from "./ModalProvider";
@@ -19,6 +22,10 @@ type CalendlyStatus =
   | "ready"
   | "error";
 
+type CalendlyMessageData = {
+  event?: string;
+};
+
 declare global {
   interface Window {
     Calendly?: {
@@ -30,6 +37,11 @@ declare global {
   }
 }
 
+const calendlyScriptUrl =
+  "https://assets.calendly.com/assets/external/widget.js";
+
+const calendlyOrigin = "https://calendly.com";
+
 export default function ScheduleModal({
   isOpen,
   onClose,
@@ -39,6 +51,52 @@ export default function ScheduleModal({
 
   const [calendlyStatus, setCalendlyStatus] =
     useState<CalendlyStatus>("loading");
+
+  const hasTrackedBookingRef = useRef(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      hasTrackedBookingRef.current = false;
+      return;
+    }
+
+    function handleCalendlyMessage(event: MessageEvent) {
+      if (event.origin !== calendlyOrigin) {
+        return;
+      }
+
+      const data = event.data as CalendlyMessageData | undefined;
+
+      if (
+        !data ||
+        data.event !== "calendly.event_scheduled"
+      ) {
+        return;
+      }
+
+      if (hasTrackedBookingRef.current) {
+        return;
+      }
+
+      hasTrackedBookingRef.current = true;
+
+      trackEvent("schedule_call_booked", {
+        booking_provider: "calendly",
+      });
+    }
+
+    window.addEventListener(
+      "message",
+      handleCalendlyMessage,
+    );
+
+    return () => {
+      window.removeEventListener(
+        "message",
+        handleCalendlyMessage,
+      );
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen || !calendlyUrl) {
@@ -53,82 +111,150 @@ export default function ScheduleModal({
       return;
     }
 
-    setCalendlyStatus("loading");
+    const containerElement = container;
+    const resolvedCalendlyUrl = calendlyUrl;
+
+    let observer: MutationObserver | null = null;
+    let loadTimeout: number | null = null;
+
+    function clearLoadTimeout() {
+      if (loadTimeout !== null) {
+        window.clearTimeout(loadTimeout);
+        loadTimeout = null;
+      }
+    }
+
+    function markAsReadyWhenIframeExists() {
+      const iframe =
+        containerElement.querySelector("iframe");
+
+      if (!iframe) {
+        return false;
+      }
+
+      observer?.disconnect();
+      observer = null;
+
+      clearLoadTimeout();
+
+      setCalendlyStatus("ready");
+
+      return true;
+    }
 
     function initializeCalendly() {
-      if (!window.Calendly) {
+      const calendly = window.Calendly;
+
+      if (!calendly) {
         setCalendlyStatus("error");
         return;
       }
 
-      container.innerHTML = "";
+      containerElement.innerHTML = "";
+
+      observer = new MutationObserver(() => {
+        markAsReadyWhenIframeExists();
+      });
+
+      observer.observe(containerElement, {
+        childList: true,
+        subtree: true,
+      });
 
       try {
-        window.Calendly.initInlineWidget({
-          url: calendlyUrl,
-          parentElement: container,
+        calendly.initInlineWidget({
+          url: resolvedCalendlyUrl,
+          parentElement: containerElement,
         });
 
-        setCalendlyStatus("ready");
+        markAsReadyWhenIframeExists();
+
+        loadTimeout = window.setTimeout(() => {
+          const iframe =
+            containerElement.querySelector("iframe");
+
+          if (iframe) {
+            return;
+          }
+
+          observer?.disconnect();
+          observer = null;
+
+          setCalendlyStatus("error");
+        }, 10000);
       } catch {
+        observer?.disconnect();
+        observer = null;
+
+        clearLoadTimeout();
+
         setCalendlyStatus("error");
       }
     }
 
+    function handleScriptError() {
+      setCalendlyStatus("error");
+    }
+
     const existingScript =
       document.querySelector<HTMLScriptElement>(
-        'script[src="https://assets.calendly.com/assets/external/widget.js"]',
+        `script[src="${calendlyScriptUrl}"]`,
       );
 
+    let script: HTMLScriptElement;
+
     if (existingScript) {
+      script = existingScript;
+
       if (window.Calendly) {
         initializeCalendly();
       } else {
-        existingScript.addEventListener(
+        script.addEventListener(
           "load",
           initializeCalendly,
           { once: true },
         );
 
-        existingScript.addEventListener(
+        script.addEventListener(
           "error",
-          () => {
-            setCalendlyStatus("error");
-          },
+          handleScriptError,
           { once: true },
         );
       }
+    } else {
+      script = document.createElement("script");
 
-      return;
+      script.src = calendlyScriptUrl;
+      script.async = true;
+
+      script.addEventListener(
+        "load",
+        initializeCalendly,
+        { once: true },
+      );
+
+      script.addEventListener(
+        "error",
+        handleScriptError,
+        { once: true },
+      );
+
+      document.body.appendChild(script);
     }
 
-    const script = document.createElement("script");
-
-    script.src =
-      "https://assets.calendly.com/assets/external/widget.js";
-
-    script.async = true;
-
-    script.addEventListener(
-      "load",
-      initializeCalendly,
-      { once: true },
-    );
-
-    script.addEventListener(
-      "error",
-      () => {
-        setCalendlyStatus("error");
-      },
-      { once: true },
-    );
-
-    document.body.appendChild(script);
-
     return () => {
+      observer?.disconnect();
+
+      clearLoadTimeout();
+
       script.removeEventListener(
         "load",
         initializeCalendly,
+      );
+
+      script.removeEventListener(
+        "error",
+        handleScriptError,
       );
     };
   }, [isOpen, calendlyUrl]);
@@ -243,8 +369,59 @@ export default function ScheduleModal({
                     </p>
 
                     <p className="mt-3 type-text type-body opacity-60">
-                      You can still contact us directly.
+                      You can still open Calendly directly or
+                      contact us here.
                     </p>
+
+                    <a
+                      href={calendlyUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="
+                        group
+                        mt-6
+                        inline-flex
+                        items-center
+                        gap-3
+                        type-button
+                        text-[var(--color-sand)]
+                      "
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="
+                          transition-transform
+                          duration-300
+                          ease-out
+                          group-hover:translate-x-1
+                          motion-reduce:transform-none
+                          motion-reduce:transition-none
+                        "
+                      >
+                        →
+                      </span>
+
+                      <span
+                        className="
+                          relative
+                          after:absolute
+                          after:bottom-0
+                          after:left-0
+                          after:h-px
+                          after:w-full
+                          after:origin-left
+                          after:scale-x-0
+                          after:bg-current
+                          after:transition-transform
+                          after:duration-300
+                          after:ease-out
+                          group-hover:after:scale-x-100
+                          motion-reduce:after:transition-none
+                        "
+                      >
+                        Open Calendly
+                      </span>
+                    </a>
                   </div>
                 </div>
               ) : (

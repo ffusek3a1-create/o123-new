@@ -20,13 +20,13 @@ const pl = {
 
     paragraph: {
       intro:
-        "Projektujemy wydarzenia, które mają znaczenie także po ich zakończeniu.",
+        "Projektujemy wydarzenia, które pozostają istotne także po ich zakończeniu.",
 
       emphasis:
-        "Od wyjazdów incentive i wydarzeń biznesowych po prywatne celebracje oraz wyprawy szyte na miarę.",
+        "Od podróży motywacyjnych i wydarzeń firmowych po prywatne uroczystości i projekty tworzone na indywidualne zamówienie.",
 
       outro:
-        "Każdą historię zaczynamy od zrozumienia ludzi i celu, a nie od gotowego scenariusza. Właśnie dlatego uczestnicy zapamiętują nie miejsca, w których byli, ale emocje, które przeżyli.",
+        "Zaczynamy od ludzi i celu, nie od gotowego planu. Reszta powstaje wokół tego, co rzeczywiście ma znaczenie dla uczestników.",
     },
   },
 
@@ -41,17 +41,20 @@ const pl = {
     },
 
     paragraph: {
-      intro: "Każdy nasz projekt zaczyna się od pytań i uważnego słuchania.",
+      intro:
+        "Każdy projekt zaczynamy od rozmowy.",
 
       emphasisOne:
-        "Nie wierzymy w uniwersalne rozwiązania, bo każde doświadczenie ma swój własny kontekst.",
+        "Nie mamy jednego przepisu na dobre wydarzenie, bo za każdym razem punkt wyjścia jest inny.",
 
       middle:
-        "Rodzaj, tempo i klimat wydarzenia dopasowujemy do tego, kim jesteście, jak chcecie się poczuć i czego potrzebujecie. Chcemy najpierw zrozumieć,",
+        "Dopasowujemy format, tempo i charakter do ludzi, okazji i celu. Najpierw chcemy zrozumieć,",
 
-      emphasisTwo: "jakie emocje ma wywołać ten moment,",
+      emphasisTwo:
+        "co ma zostać z uczestnikami po tym wydarzeniu,",
 
-      outro: "a cała reszta będzie konsekwencją tych dyskusji.",
+      outro:
+        "a dopiero potem układamy wszystko, co ma do tego doprowadzić.",
     },
   },
 
@@ -79,7 +82,7 @@ const pl = {
               text: " Dobre doświadczenia nie zaczynają się od pomysłów. ",
             },
             {
-              text: "Zaczynają się od celu.",
+              text: "Zaczynają się od odpowiedzi na to pytanie.",
               emphasized: true,
             },
           ],
@@ -90,7 +93,7 @@ const pl = {
           title: "Rytm & emocje",
           description: [
             {
-              text: "Dobre doświadczenie ma początek, napięcie i finał. Dlatego projektujemy wydarzenia jak historię — z rytmem, który prowadzi uczestników od pierwszej do ostatniej chwili.",
+              text: "Zależy nam na płynności całego wydarzenia, od momentu pierwszego skontaktowania się z uczestnikami aż do jego finalizacji.",
             },
           ],
         },
@@ -158,37 +161,37 @@ const pl = {
           id: "business",
           title: "BIZNES",
           description:
-            "Tworzymy wydarzenia biznesowe, które pomagają budować relacje, wzmacniać zaufanie i komunikować to, czego nie da się przekazać prezentacją. Konferencje, premiery produktów, gale czy spotkania dla partnerów projektujemy wokół ludzi oraz celu wydarzenia, dzięki czemu pozostawiają trwałe wrażenie jeszcze długo po zakończeniu.",
+            "Projektujemy konferencje, premiery, gale i spotkania dla partnerów, które odpowiadają na konkretny cel biznesowy. Najpierw ustalamy, co wydarzenie ma osiągnąć, a dopiero później dobieramy jego format, miejsce i przebieg.",
         },
         {
           id: "incentive",
           title: "INCENTIVE",
           description:
-            "Projektujemy wyjazdy incentive i podróże motywacyjne, które stają się realnym narzędziem budowania zaangażowania oraz lojalności zespołów. Od kameralnych wyjazdów dla zarządów po wielodniowe ekspedycje. Tworzymy doświadczenia dopasowane do ludzi, miejsca i celu podróży.",
+            "Tworzymy wyjazdy incentive dla zespołów, klientów i zarządów — od krótkich wyjazdów po rozbudowane, kilkudniowe programy. Każdy z nich budujemy wokół konkretnej grupy, celu i miejsca, zamiast korzystać z gotowych schematów.",
         },
         {
           id: "private",
           title: "PRYWATNE",
           description:
-            "Najważniejsze chwile zasługują na wyjątkową oprawę. Organizujemy prywatne wydarzenia, takie jak zaręczyny, jubileusze, urodziny czy rodzinne uroczystości, dbając o każdy detal i tworząc atmosferę, którą uczestnicy będą wspominać przez lata.",
+            "Organizujemy prywatne wydarzenia — urodziny, jubileusze, zaręczyny i rodzinne uroczystości. Zamiast zaczynać od gotowego scenariusza, najpierw ustalamy, jaki charakter ma mieć spotkanie i co jest naprawdę ważne dla osób, które będą jego częścią.",
         },
         {
           id: "expeditions",
           title: "WYPRAWY",
           description:
-            "Nie wszystkie podróże prowadzą do hoteli i sal konferencyjnych. Organizujemy wyprawy szyte na miarę od safari i ekspedycji terenowych po wyjątkowe podróże do miejsc, które trudno znaleźć w katalogach biur podróży. Liczy się nie kierunek, lecz doświadczenie.",
+            "Projektujemy podróże i wyprawy poza standardowym turystycznym schematem — od safari i tras terenowych po mniej oczywiste kierunki i miejsca. Program powstaje od podstaw, zależnie od tego, czego uczestnicy chcą doświadczyć i w jaki sposób chcą podróżować.",
         },
         {
           id: "team",
           title: "ZESPÓŁ",
           description:
-            "Silny zespół buduje się poprzez wspólne doświadczenia. Projektujemy wydarzenia integracyjne, aktywności outdoorowe, warsztaty i wyjazdy, które rozwijają współpracę, wzmacniają relacje i pozwalają spojrzeć na siebie z zupełnie nowej perspektywy.",
+            "Tworzymy wyjazdy, aktywności i spotkania, które pozwalają zespołowi spędzić czas razem poza codziennym środowiskiem pracy. Nie zaczynamy od katalogu atrakcji — dobieramy format do ludzi, charakteru zespołu i tego, po co właściwie się spotykacie.",
         },
         {
           id: "bespoke",
           title: "INDYWIDUALNE",
           description:
-            "Nie wszystkie pomysły mieszczą się w gotowych kategoriach. Jeśli planujesz wydarzenie wymagające niestandardowego podejścia, przygotujemy rozwiązanie od podstaw. Łączymy kreatywność z precyzyjną organizacją, niezależnie od skali i miejsca realizacji.",
+            "Nie każdy pomysł pasuje do gotowej kategorii. Jeśli projekt wymaga nietypowego formatu, miejsca albo sposobu realizacji, tworzymy go od podstaw i dopasowujemy cały proces do konkretnej sytuacji.",
         },
       ],
     },
@@ -240,12 +243,12 @@ const pl = {
     establishment: "Est. Wrocław // Q3 2026",
 
     heading: {
-      firstLine: "Gotowy na stworzenie",
-      secondLine: "czegoś niezapomnianego?",
+      firstLine: "Zacznijmy od",
+      secondLine: "rozmowy.",
     },
 
     description:
-      "Każda historia jest inna, dlatego nie zaczynamy od gotowych scenariuszy. Zaczynamy od rozmowy o tym, co chcesz przeżyć i zapamiętać. Resztę projektujemy wokół ludzi, miejsca i emocji.",
+      "Nie musisz przychodzić do nas z gotowym scenariuszem. Wystarczy pomysł, okazja albo cel, o którym chcesz porozmawiać. Od tego zaczynamy.",
 
     actions: {
       startProject: "Start a project",
@@ -265,7 +268,7 @@ const pl = {
 
       emailPromptFirstLine: "Masz dość formularzy? Napisz",
       emailPromptSecondLine: "do nas e-mail",
-      email: "o123@event.pl",
+      email: "hello@o123.pl",
 
       mediaLabel: "Media",
     },
@@ -276,6 +279,22 @@ const pl = {
       terms: "Regulamin",
       privacyPolicy: "Polityka prywatności",
       author: "Made by: @Pepiqity",
+    },
+  },
+
+  homePage: {
+    metadata: {
+      title: "o123 | Eventy, incentive i wyjątkowe doświadczenia",
+      description:
+        "Projektujemy wydarzenia biznesowe, wyjazdy incentive, prywatne celebracje i wyprawy szyte na miarę — wokół ludzi, emocji i celu.",
+    },
+  },
+
+  journalPage: {
+    metadata: {
+      title: "Journal | o123",
+      description:
+        "Idee, psychologia i projektowanie doświadczeń. O tym, jak tworzyć momenty, które zostają z ludźmi także po zakończeniu wydarzenia.",
     },
   },
 

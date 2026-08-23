@@ -36,13 +36,13 @@ const de = {
 
     paragraph: {
       intro:
-        "Wir gestalten Erlebnisse, die auch lange nach ihrem Ende von Bedeutung bleiben.",
+        "Wir gestalten Events, die auch nach ihrem Ende noch Bedeutung haben.",
 
       emphasis:
-        "Von Incentive-Reisen und Business-Events bis hin zu privaten Feiern und maßgeschneiderten Expeditionen.",
+        "Von Incentive-Reisen und Business-Events bis hin zu privaten Feiern und Projekten, die individuell von Grund auf entwickelt werden.",
 
       outro:
-        "Jede Geschichte beginnt für uns mit dem Verständnis für Menschen und Ziele – nicht mit einem vorgefertigten Ablauf. Deshalb erinnern sich die Teilnehmenden nicht nur daran, wo sie waren, sondern vor allem daran, was sie empfunden haben.",
+        "Wir beginnen mit den Menschen und dem Ziel, nicht mit einem fertigen Plan. Alles Weitere entsteht rund um das, was für die Teilnehmenden wirklich relevant ist.",
     },
   },
 
@@ -58,17 +58,19 @@ const de = {
 
     paragraph: {
       intro:
-        "Jedes unserer Projekte beginnt mit den richtigen Fragen und aufmerksamem Zuhören.",
+        "Jedes Projekt beginnt mit einem Gespräch.",
 
       emphasisOne:
-        "Wir glauben nicht an universelle Lösungen, denn jedes Erlebnis hat seinen eigenen Kontext.",
+        "Es gibt kein Patentrezept für ein gutes Event, denn die Ausgangssituation ist jedes Mal eine andere.",
 
       middle:
-        "Art, Tempo und Atmosphäre eines Events richten wir danach aus, wer ihr seid, wie sich die Menschen fühlen sollen und was ihr erreichen möchtet. Zuerst wollen wir verstehen,",
+        "Format, Tempo und Charakter stimmen wir auf die Menschen, den Anlass und das Ziel ab. Zuerst möchten wir verstehen,",
 
-      emphasisTwo: "welche Emotionen dieser Moment auslösen soll,",
+      emphasisTwo:
+        "was die Teilnehmenden aus diesem Erlebnis mitnehmen sollen,",
 
-      outro: "alles Weitere entsteht als Konsequenz aus diesem Gespräch.",
+      outro:
+        "und erst danach entwickeln wir alles, was dorthin führt.",
     },
   },
 
@@ -96,7 +98,7 @@ const de = {
               text: " Gute Erlebnisse beginnen nicht mit Ideen. ",
             },
             {
-              text: "Sie beginnen mit einem klaren Ziel.",
+              text: "Sie beginnen mit der Antwort auf diese Frage.",
               emphasized: true,
             },
           ],
@@ -107,7 +109,7 @@ const de = {
           title: "Rhythmus & Emotionen",
           description: [
             {
-              text: "Ein gutes Erlebnis hat einen Anfang, einen Spannungsbogen und ein Finale. Deshalb gestalten wir Events wie Geschichten – mit einem Rhythmus, der die Teilnehmenden vom ersten bis zum letzten Moment führt.",
+              text: "Uns ist wichtig, dass das gesamte Event stimmig und fließend abläuft — vom ersten Kontakt mit den Teilnehmenden bis zum Abschluss.",
             },
           ],
         },
@@ -175,37 +177,37 @@ const de = {
           id: "business",
           title: "BUSINESS",
           description:
-            "Wir gestalten Business-Events, die Beziehungen aufbauen, Vertrauen stärken und vermitteln, was sich mit keiner Präsentation ausdrücken lässt. Konferenzen, Produktpremieren, Galas und Partnertreffen entwickeln wir rund um die Menschen und das Ziel der Veranstaltung. So hinterlassen sie noch lange nach ihrem Ende einen bleibenden Eindruck.",
+            "Wir gestalten Konferenzen, Produktpremieren, Galas und Partnertreffen mit einem konkreten geschäftlichen Ziel. Zuerst klären wir, was das Event erreichen soll. Erst danach legen wir Format, Ort und Ablauf fest.",
         },
         {
           id: "incentive",
           title: "INCENTIVE",
           description:
-            "Wir gestalten Incentive-Reisen und Motivationsreisen, die zu wirkungsvollen Instrumenten für mehr Engagement und Loyalität im Team werden. Von exklusiven Reisen für Führungskräfte bis hin zu mehrtägigen Expeditionen entwickeln wir Erlebnisse, die auf die Menschen, den Ort und das Ziel der Reise abgestimmt sind.",
+            "Wir entwickeln Incentive-Reisen für Teams, Kunden und Führungskräfte — von kurzen Auszeiten bis hin zu umfangreicheren mehrtägigen Programmen. Jede Reise wird auf die jeweilige Gruppe, das Ziel und den Ort abgestimmt, statt einem fertigen Schema zu folgen.",
         },
         {
           id: "private",
           title: "PRIVATE EVENTS",
           description:
-            "Die wichtigsten Momente im Leben verdienen einen außergewöhnlichen Rahmen. Wir organisieren private Veranstaltungen wie Verlobungen, Jubiläen, Geburtstage und Familienfeiern, kümmern uns um jedes Detail und schaffen eine Atmosphäre, an die sich die Gäste noch viele Jahre erinnern werden.",
+            "Wir organisieren private Events — Geburtstage, Jubiläen, Verlobungen und Familienfeiern. Statt mit einem fertigen Konzept zu beginnen, klären wir zuerst, welchen Charakter der Anlass haben soll und was den Menschen, die dabei sein werden, wirklich wichtig ist.",
         },
         {
           id: "expeditions",
           title: "EXPEDITIONEN",
           description:
-            "Nicht jede Reise führt in ein Hotel oder einen Konferenzraum. Wir organisieren maßgeschneiderte Expeditionen – von Safaris und Offroad-Abenteuern bis hin zu außergewöhnlichen Reisen an Orte, die in klassischen Reisekatalogen kaum zu finden sind. Entscheidend ist nicht das Ziel, sondern das Erlebnis.",
+            "Wir gestalten Reisen und Expeditionen abseits klassischer touristischer Routen — von Safaris und Offroad-Touren bis hin zu weniger offensichtlichen Reisezielen und Orten. Das Programm entsteht von Grund auf danach, was die Teilnehmenden erleben und wie sie reisen möchten.",
         },
         {
           id: "team",
           title: "TEAM",
           description:
-            "Starke Teams entstehen durch gemeinsame Erlebnisse. Wir gestalten Teambuilding-Events, Outdoor-Aktivitäten, Workshops und Reisen, die die Zusammenarbeit fördern, Beziehungen stärken und neue Perspektiven aufeinander eröffnen.",
+            "Wir gestalten Reisen, Aktivitäten und Treffen, bei denen Teams gemeinsam Zeit außerhalb ihres gewohnten Arbeitsumfelds verbringen können. Wir beginnen nicht mit einem Katalog von Aktivitäten, sondern wählen das Format passend zu den Menschen, der Dynamik im Team und dem eigentlichen Grund für das Treffen.",
         },
         {
           id: "bespoke",
           title: "INDIVIDUELL",
           description:
-            "Manche Ideen passen in keine vorgefertigte Kategorie. Wenn ein Event einen außergewöhnlichen Ansatz erfordert, entwickeln wir die passende Lösung von Grund auf. Dabei verbinden wir Kreativität mit präziser Organisation – unabhängig von Umfang und Veranstaltungsort.",
+            "Nicht jede Idee passt in eine bestehende Kategorie. Wenn ein Projekt ein ungewöhnliches Format, einen besonderen Ort oder eine andere Art der Umsetzung erfordert, entwickeln wir es von Grund auf und stimmen den gesamten Prozess auf die konkrete Situation ab.",
         },
       ],
     },
@@ -256,12 +258,12 @@ const de = {
     establishment: "Est. Wrocław // Q3 2026",
 
     heading: {
-      firstLine: "Bereit, etwas",
-      secondLine: "Unvergessliches zu schaffen?",
+      firstLine: "Beginnen wir mit",
+      secondLine: "einem Gespräch.",
     },
 
     description:
-      "Jede Geschichte ist anders. Deshalb beginnen wir nie mit fertigen Konzepten, sondern mit einem Gespräch darüber, was die Menschen erleben und in Erinnerung behalten sollen. Alles Weitere gestalten wir rund um die Menschen, den Ort und die Emotionen.",
+      "Du musst nicht mit einem fertigen Konzept zu uns kommen. Eine Idee, ein Anlass oder ein Ziel, über das du sprechen möchtest, reicht aus. Genau dort beginnen wir.",
 
     actions: {
       startProject: "Start a project",
@@ -281,7 +283,7 @@ const de = {
 
       emailPromptFirstLine: "Keine Lust auf Formulare?",
       emailPromptSecondLine: "Schreib uns eine E-Mail",
-      email: "o123@event.pl",
+      email: "hello@o123.pl",
 
       mediaLabel: "Social Media",
     },
@@ -292,6 +294,22 @@ const de = {
       terms: "Allgemeine Geschäftsbedingungen",
       privacyPolicy: "Datenschutzerklärung",
       author: "Made by: @Pepiqity",
+    },
+  },
+
+  homePage: {
+    metadata: {
+      title: "o123 | Events, Incentive-Reisen & besondere Erlebnisse",
+      description:
+        "Wir gestalten Business-Events, Incentive-Reisen, private Feiern und maßgeschneiderte Expeditionen rund um Menschen, Emotionen und Ziele.",
+    },
+  },
+
+  journalPage: {
+    metadata: {
+      title: "Journal | o123",
+      description:
+        "Ideen, Psychologie und Erlebnisdesign. Darüber, wie Momente entstehen, die Menschen noch lange nach einem Event in Erinnerung bleiben.",
     },
   },
 

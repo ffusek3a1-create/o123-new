@@ -7,15 +7,27 @@ import {
   type ReactNode,
 } from "react";
 
+import {
+  trackEvent,
+  type CtaLocation,
+} from "@/lib/analytics";
+
 export type ModalType =
   | "quote"
   | "schedule"
   | "quick-contact"
   | null;
 
+type OpenModalOptions = {
+  ctaLocation?: CtaLocation;
+};
+
 type ModalContextValue = {
   activeModal: ModalType;
-  openModal: (modal: Exclude<ModalType, null>) => void;
+  openModal: (
+    modal: Exclude<ModalType, null>,
+    options?: OpenModalOptions,
+  ) => void;
   closeModal: () => void;
 };
 
@@ -31,7 +43,28 @@ export function ModalProvider({
   const [activeModal, setActiveModal] =
     useState<ModalType>(null);
 
-  function openModal(modal: Exclude<ModalType, null>) {
+  function openModal(
+    modal: Exclude<ModalType, null>,
+    options?: OpenModalOptions,
+  ) {
+    const eventParams = options?.ctaLocation
+      ? {
+          cta_location: options.ctaLocation,
+        }
+      : undefined;
+
+    if (modal === "schedule") {
+      trackEvent("schedule_call_click", eventParams);
+    }
+
+    if (modal === "quote") {
+      trackEvent("request_quote_click", eventParams);
+    }
+
+    if (modal === "quick-contact") {
+      trackEvent("quick_contact_click", eventParams);
+    }
+
     setActiveModal(modal);
   }
 

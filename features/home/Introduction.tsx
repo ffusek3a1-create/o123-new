@@ -145,6 +145,51 @@ export default function Introduction({ content }: IntroductionProps) {
       {/* Desktop guide lines */}
       <GuideLines className="introduction-desktop-decoration" />
 
+      {/* Shared heading */}
+      <div
+        className="
+          relative
+          z-10
+          px-[var(--page-gutter)]
+          pt-[56px]
+          min-[834px]:pt-[72px]
+          min-[1440px]:absolute
+          min-[1440px]:left-[calc(var(--page-gutter)+48px)]
+          min-[1440px]:top-[72px]
+          min-[1440px]:px-0
+          min-[1440px]:pt-0
+        "
+      >
+        <div className="flex flex-col gap-8">
+          <Reveal direction="none" duration="fast" delay={40}>
+            <p className="type-small uppercase">{content.label}</p>
+          </Reveal>
+
+          <Reveal distance="small">
+            <h2
+              className="
+                type-heading
+                type-heading-xl
+                h-[4lh]
+                w-full
+                min-[834px]:h-[2lh]
+                min-[1440px]:h-auto
+              "
+            >
+              {content.heading.firstLine}
+              <br />
+              {content.heading.secondLine}{" "}
+              <span className="block min-[834px]:inline">
+                <AnimatedWord
+                  className="text-[#6C9A8B]"
+                  words={[...content.heading.animated]}
+                />
+              </span>
+            </h2>
+          </Reveal>
+        </div>
+      </div>
+
       {/* Mobile / tablet layout */}
       <div
         className="
@@ -152,48 +197,18 @@ export default function Introduction({ content }: IntroductionProps) {
           z-10
           px-[var(--page-gutter)]
           pb-[72px]
-          pt-[56px]
-          min-[834px]:pt-[72px]
+          pt-[32px]
+          min-[834px]:pt-[40px]
           min-[1440px]:hidden
         "
       >
         <div className="flex flex-col gap-8">
-          {/* Heading */}
-          <div className="flex flex-col gap-8">
-            <Reveal direction="none" duration="fast" delay={40}>
-              <p className="type-small uppercase">{content.label}</p>
-            </Reveal>
-
-            <Reveal distance="small">
-              <h2
-                className="
-                  type-heading
-                  type-heading-xl
-                  h-[4lh]
-                  w-full
-                  min-[834px]:h-[2lh]
-                  min-[1440px]:h-auto
-                "
-              >
-                {content.heading.firstLine}
-                <br />
-                {content.heading.secondLine}{" "}
-                <span className="block min-[834px]:inline">
-                  <AnimatedWord
-                    className="text-[#6C9A8B]"
-                    words={[...content.heading.animated]}
-                  />
-                </span>
-              </h2>
-            </Reveal>
-          </div>
-
           {/* Image */}
           <ImageReveal className="h-[276px] w-full">
             <div className="image-frame h-[276px] w-full">
               <Image
                 src="/images/introduction-image.jpg"
-                alt="Przygotowania do wyjątkowego wydarzenia organizowanego przez o123"
+                alt=""
                 fill
                 className="object-cover object-center"
                 sizes="
@@ -220,7 +235,11 @@ export default function Introduction({ content }: IntroductionProps) {
           <Reveal distance="small" delay={300}>
             <button
               type="button"
-              onClick={() => openModal("schedule")}
+              onClick={() =>
+                openModal("schedule", {
+                  ctaLocation: "introduction",
+                })
+              }
               className="
                 group
                 inline-flex
@@ -293,36 +312,6 @@ export default function Introduction({ content }: IntroductionProps) {
           min-[1440px]:[grid-template-areas:'content']
         "
       >
-        {/* Left content */}
-        <div
-          className="
-            [grid-area:content]
-            flex
-            flex-col
-            gap-8
-            self-start
-            justify-self-start
-            pl-[calc(var(--page-gutter)+48px)]
-            pt-[72px]
-          "
-        >
-          <Reveal direction="none" duration="fast" delay={40}>
-            <p className="type-small uppercase">{content.label}</p>
-          </Reveal>
-
-          <Reveal distance="small" delay={100}>
-            <h2 className="type-heading type-heading-xl">
-              {content.heading.firstLine}
-              <br />
-              {content.heading.secondLine}{" "}
-              <AnimatedWord
-                className="text-[#6C9A8B]"
-                words={[...content.heading.animated]}
-              />
-            </h2>
-          </Reveal>
-        </div>
-
         {/* Center image */}
         <ImageReveal
           className="
@@ -336,7 +325,7 @@ export default function Introduction({ content }: IntroductionProps) {
           <div className="image-frame h-[276px] w-full">
             <Image
               src="/images/introduction-image.jpg"
-              alt="Przygotowania do wyjątkowego wydarzenia organizowanego przez o123"
+              alt=""
               fill
               className="object-cover object-center"
               sizes="304px"
@@ -372,7 +361,11 @@ export default function Introduction({ content }: IntroductionProps) {
           <Reveal distance="small" delay={300}>
             <button
               type="button"
-              onClick={() => openModal("schedule")}
+              onClick={() =>
+                openModal("schedule", {
+                  ctaLocation: "introduction",
+                })
+              }
               className="
                 group
                 inline-flex

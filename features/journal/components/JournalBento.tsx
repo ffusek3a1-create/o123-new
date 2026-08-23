@@ -4,8 +4,34 @@ import Link from "next/link";
 import ButtonLink from "@/components/ui/ButtonLink";
 import type { Locale } from "@/i18n/config";
 
-import { journalArticles } from "../data/articles";
+import { getJournalArticles } from "../data/articles";
 import { seriesLabels } from "../lib/seriesLabels";
+
+
+const journalUi = {
+  pl: {
+    more: "Więcej",
+    viewAllCategories: "Zobacz wszystkie kategorie",
+  },
+  en: {
+    more: "More",
+    viewAllCategories: "View all categories",
+  },
+  de: {
+    more: "Mehr",
+    viewAllCategories: "Alle Kategorien anzeigen",
+  },
+  cs: {
+    more: "Více",
+    viewAllCategories: "Zobrazit všechny kategorie",
+  },
+} as const satisfies Record<
+  Locale,
+  {
+    more: string;
+    viewAllCategories: string;
+  }
+>;
 
 type JournalBentoProps = {
   locale: Locale;
@@ -14,7 +40,8 @@ type JournalBentoProps = {
 export default function JournalBento({
   locale,
 }: JournalBentoProps) {
-  const [articleOne, articleTwo, articleThree] = journalArticles;
+  const [articleOne, articleTwo, articleThree] = getJournalArticles(locale);
+  const ui = journalUi[locale];
 
   if (!articleOne || !articleTwo || !articleThree) {
     return null;
@@ -43,7 +70,6 @@ export default function JournalBento({
               motion-reduce:transform-none
               motion-reduce:transition-none
             "
-            priority
           />
 
           <div
@@ -82,9 +108,9 @@ export default function JournalBento({
             </div>
 
             <div className="mt-4 max-w-[280px]">
-              <h3 className="type-heading type-heading-lg">
+              <h2 className="type-heading type-heading-lg">
                 {articleOne.title}
-              </h3>
+              </h2>
             </div>
 
             <span
@@ -107,7 +133,7 @@ export default function JournalBento({
         </article>
 
         {/* 02 — Intro */}
-        <article className="mt-8">
+        <div className="mt-8">
           <p className="type-caption uppercase opacity-[var(--font-caption-opacity)]">
             {seriesLabels[articleOne.series]} / {articleOne.code}
           </p>
@@ -119,9 +145,9 @@ export default function JournalBento({
             {articleOne.published}
           </time>
 
-          <h3 className="mt-4 type-heading type-heading-lg">
+          <p className="mt-4 type-heading type-heading-lg">
             {articleOne.title}
-          </h3>
+          </p>
 
           <p className="mt-8 type-text type-body">
             {articleOne.description}{" "}
@@ -135,7 +161,7 @@ export default function JournalBento({
                 text-[var(--color-blush)]
               "
             >
-              ...More
+              ...{ui.more}
 
               <span
                 aria-hidden="true"
@@ -249,7 +275,7 @@ export default function JournalBento({
               </span>
             </Link>
           </div>
-        </article>
+        </div>
 
         {/* 03 — Categories */}
         <aside
@@ -286,7 +312,7 @@ export default function JournalBento({
               href="#journal-categories-mobile"
               className="text-[var(--color-sand)]"
             >
-              View All Categories
+              {ui.viewAllCategories}
             </ButtonLink>
           </div>
         </aside>
@@ -344,9 +370,9 @@ export default function JournalBento({
                 {articleTwo.published}
               </time>
 
-              <h3 className="mt-4 max-w-[300px] type-heading type-heading-lg">
+              <h2 className="mt-4 max-w-[300px] type-heading type-heading-lg">
                 {articleTwo.title}
-              </h3>
+              </h2>
             </div>
           </Link>
         </article>
@@ -393,9 +419,9 @@ export default function JournalBento({
               p-4
             "
           >
-            <h3 className="max-w-[300px] type-heading type-heading-lg">
+            <h2 className="max-w-[300px] type-heading type-heading-lg">
               {articleThree.title}
-            </h3>
+            </h2>
           </Link>
         </article>
       </div>
@@ -430,7 +456,6 @@ export default function JournalBento({
                 motion-reduce:transform-none
                 motion-reduce:transition-none
               "
-              priority
             />
 
             <div
@@ -470,9 +495,9 @@ export default function JournalBento({
               </div>
 
               <div className="mt-auto">
-                <h3 className="type-heading type-heading-lg">
+                <h2 className="type-heading type-heading-lg">
                   {articleOne.title}
-                </h3>
+                </h2>
 
                 <span
                   aria-hidden="true"
@@ -497,7 +522,7 @@ export default function JournalBento({
           {/* RIGHT COLUMN */}
           <div className="flex min-h-0 flex-col">
             {/* 02 — Intro */}
-            <article>
+            <div>
               <p className="type-caption uppercase opacity-[var(--font-caption-opacity)]">
                 {seriesLabels[articleOne.series]} / {articleOne.code}
               </p>
@@ -509,9 +534,9 @@ export default function JournalBento({
                 {articleOne.published}
               </time>
 
-              <h3 className="mt-4 type-heading type-heading-lg">
+              <p className="mt-4 type-heading type-heading-lg">
                 {articleOne.title}
-              </h3>
+              </p>
 
               <p className="mt-6 type-text type-body">
                 {articleOne.description}{" "}
@@ -525,7 +550,7 @@ export default function JournalBento({
                     text-[var(--color-blush)]
                   "
                 >
-                  ...More
+                  ...{ui.more}
 
                   <span
                     aria-hidden="true"
@@ -638,7 +663,7 @@ export default function JournalBento({
                   </span>
                 </Link>
               </div>
-            </article>
+            </div>
 
             {/* 03 — Categories */}
             <aside
@@ -675,7 +700,7 @@ export default function JournalBento({
                   href="#journal-categories-tablet"
                   className="text-[var(--color-sand)]"
                 >
-                  View All Categories
+                  {ui.viewAllCategories}
                 </ButtonLink>
               </div>
             </aside>
@@ -743,9 +768,9 @@ export default function JournalBento({
                 {articleTwo.published}
               </time>
 
-              <h3 className="mt-4 max-w-[620px] type-heading type-heading-lg">
+              <h2 className="mt-4 max-w-[620px] type-heading type-heading-lg">
                 {articleTwo.title}
-              </h3>
+              </h2>
             </div>
           </Link>
         </article>
@@ -804,9 +829,9 @@ export default function JournalBento({
               {seriesLabels[articleThree.series]}
             </p>
 
-            <h3 className="mt-4 max-w-[680px] type-heading type-heading-lg">
+            <h2 className="mt-4 max-w-[680px] type-heading type-heading-lg">
               {articleThree.title}
-            </h3>
+            </h2>
           </Link>
         </article>
       </div>
@@ -839,7 +864,6 @@ export default function JournalBento({
               motion-reduce:transform-none
               motion-reduce:transition-none
             "
-            priority
           />
 
           <div
@@ -879,9 +903,9 @@ export default function JournalBento({
             </div>
 
             <div className="mt-auto">
-              <h3 className="type-heading type-heading-lg">
+              <h2 className="type-heading type-heading-lg">
                 {articleOne.title}
-              </h3>
+              </h2>
 
               <span
                 aria-hidden="true"
@@ -922,7 +946,7 @@ export default function JournalBento({
             "
           >
             {/* 02 — Intro */}
-            <article className="flex min-h-0 flex-col">
+            <div className="flex min-h-0 flex-col">
               <div>
                 <p className="type-caption uppercase opacity-[var(--font-caption-opacity)]">
                   {seriesLabels[articleOne.series]} / {articleOne.code}
@@ -935,9 +959,9 @@ export default function JournalBento({
                   {articleOne.published}
                 </time>
 
-                <h3 className="mt-4 max-w-[760px] type-heading type-heading-lg">
+                <p className="mt-4 max-w-[760px] type-heading type-heading-lg">
                   {articleOne.title}
-                </h3>
+                </p>
 
                 <p className="mt-6 max-w-[720px] type-text type-body">
                   {articleOne.description}{" "}
@@ -951,7 +975,7 @@ export default function JournalBento({
                       text-[var(--color-blush)]
                     "
                   >
-                    ...More
+                    ...{ui.more}
 
                     <span
                       aria-hidden="true"
@@ -1063,7 +1087,7 @@ export default function JournalBento({
                   </span>
                 </Link>
               </div>
-            </article>
+            </div>
 
             {/* 03 — Upper right image card */}
             <article className="group relative min-h-0 overflow-hidden">
@@ -1113,9 +1137,9 @@ export default function JournalBento({
                 </div>
 
                 <div className="mt-auto">
-                  <h3 className="type-heading type-heading-lg">
+                  <h2 className="type-heading type-heading-lg">
                     {articleTwo.title}
-                  </h3>
+                  </h2>
 
                   <span
                     aria-hidden="true"
@@ -1193,9 +1217,9 @@ export default function JournalBento({
                   {seriesLabels[articleThree.series]}
                 </p>
 
-                <h3 className="mt-4 max-w-[680px] type-heading type-heading-lg">
+                <h2 className="mt-4 max-w-[680px] type-heading type-heading-lg">
                   {articleThree.title}
-                </h3>
+                </h2>
               </Link>
             </article>
 
@@ -1233,7 +1257,7 @@ export default function JournalBento({
                   href="#journal-categories"
                   className="text-[var(--color-sand)]"
                 >
-                  View All Categories
+                  {ui.viewAllCategories}
                 </ButtonLink>
               </div>
             </aside>

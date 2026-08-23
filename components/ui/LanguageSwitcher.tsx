@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
+import { getJournalArticleByCode, getJournalArticleBySlug } from "@/features/journal/data/articles";
 import { defaultLocale, isLocale, locales, type Locale } from "@/i18n/config";
 
 const localeLabels: Record<Locale, string> = {
@@ -23,6 +24,34 @@ function getLocalizedPath(pathname: string, targetLocale: Locale) {
 
   if (segments.length === 0) {
     return `/${targetLocale}`;
+  }
+
+  const currentLocale =
+    segments[0] && isLocale(segments[0])
+      ? segments[0]
+      : defaultLocale;
+
+  const isJournalArticle =
+    isLocale(segments[0]) &&
+    segments[1] === "journal" &&
+    typeof segments[2] === "string";
+
+  if (isJournalArticle) {
+    const currentArticle = getJournalArticleBySlug(
+      currentLocale,
+      segments[2],
+    );
+
+    if (currentArticle) {
+      const targetArticle = getJournalArticleByCode(
+        targetLocale,
+        currentArticle.code,
+      );
+
+      if (targetArticle) {
+        return `/${targetLocale}/journal/${targetArticle.slug}`;
+      }
+    }
   }
 
   if (isLocale(segments[0])) {

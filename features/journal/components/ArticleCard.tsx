@@ -42,10 +42,10 @@ export default function ArticleCard({
           </p>
 
           <time
-            dateTime={article.date}
+            dateTime={article.published}
             className="type-caption uppercase opacity-40"
           >
-            {article.date}
+            {article.published}
           </time>
         </div>
 

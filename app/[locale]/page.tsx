@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import GuideLines from "@/components/ui/GuideLines";
 import BridgeInterlude from "@/features/home/BridgeInterlude";
 import Contact from "@/features/home/Contact";
@@ -15,12 +17,66 @@ type HomePageProps = {
   }>;
 };
 
+export async function generateMetadata({
+  params,
+}: HomePageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const dictionary = await getDictionary(locale);
+
+  const title = dictionary.homePage.metadata.title;
+  const description = dictionary.homePage.metadata.description;
+
+  return {
+    title,
+    description,
+
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        pl: "/pl",
+        en: "/en",
+        de: "/de",
+        cs: "/cs",
+        "x-default": "/pl",
+      },
+    },
+
+    openGraph: {
+      type: "website",
+      siteName: "o123",
+      title,
+      description,
+      url: `/${locale}`,
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   const dictionary = await getDictionary(locale);
 
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "o123",
+    url: "https://o123.pl",
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <Hero
         heading={dictionary.hero.heading}
         paragraph={dictionary.hero.paragraph}
@@ -37,7 +93,7 @@ export default async function HomePage({ params }: HomePageProps) {
         accessibility={dictionary.bridgeInterlude.accessibility}
       />
 
-      <div className="relative overflow-hidden bg-[#17382f] text-[var(--color-sand)]">
+      <div className="relative overflow-hidden bg-[#1C2A25] text-[var(--color-sand)]">
         <GuideLines
           className="border-[var(--color-sand)]/35"
           leftTopCaption="05/05"
@@ -45,14 +101,17 @@ export default async function HomePage({ params }: HomePageProps) {
           rightCaption="Stories worth remembering"
         />
 
-        <Journal content={dictionary.journal} />
+        <Journal
+          content={dictionary.journal}
+          locale={locale}
+        />
 
         <div
           aria-hidden="true"
           className="mx-[var(--page-gutter)] hidden border-t border-[var(--color-sand)]/40 min-[1440px]:block"
         />
 
-        <Contact content={dictionary.contact} />
+        <Contact content={dictionary.contact} locale={locale} />
       </div>
 
       <BackToTop />

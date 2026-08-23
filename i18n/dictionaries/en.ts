@@ -36,13 +36,13 @@ const en = {
 
     paragraph: {
       intro:
-        "We design experiences that continue to matter long after they end.",
+        "We design events that continue to matter long after they are over.",
 
       emphasis:
-        "From incentive travel and corporate events to private celebrations and bespoke expeditions.",
+        "From incentive travel and corporate events to private celebrations and projects created entirely around individual needs.",
 
       outro:
-        "Every story begins with understanding people and purpose rather than following a predefined scenario. That's why participants remember not where they were, but how they felt.",
+        "We start with people and purpose, not a ready-made plan. Everything else is built around what genuinely matters to the participants.",
     },
   },
 
@@ -58,17 +58,19 @@ const en = {
 
     paragraph: {
       intro:
-        "Every project begins with thoughtful questions and careful listening.",
+        "Every project starts with a conversation.",
 
       emphasisOne:
-        "We don't believe in one-size-fits-all solutions because every experience has its own context.",
+        "There is no single formula for a good event because the starting point is different every time.",
 
       middle:
-        "The pace, atmosphere and direction of every event are shaped around who you are, how you want people to feel and what you want to achieve. We first want to understand",
+        "We shape the format, pace and character around the people, the occasion and the purpose. First, we want to understand",
 
-      emphasisTwo: "what emotions this moment should create,",
+      emphasisTwo:
+        "what participants should take away from the experience,",
 
-      outro: "and everything else naturally follows from that conversation.",
+      outro:
+        "and only then do we build everything that leads to it.",
     },
   },
 
@@ -96,7 +98,7 @@ const en = {
               text: " Great experiences don't begin with ideas. ",
             },
             {
-              text: "They begin with purpose.",
+              text: "They begin with the answer to that question.",
               emphasized: true,
             },
           ],
@@ -107,7 +109,7 @@ const en = {
           title: "Rhythm & Emotion",
           description: [
             {
-              text: "Every memorable experience has a beginning, rising tension and a meaningful finale. That's why we design events like stories, creating a rhythm that naturally guides participants from the very first moment to the last.",
+              text: "We care about how smoothly the whole event flows, from the first contact with participants through to the very end.",
             },
           ],
         },
@@ -175,37 +177,37 @@ const en = {
           id: "business",
           title: "BUSINESS",
           description:
-            "We create business events that build relationships, strengthen trust and communicate what no presentation ever could. From conferences and product launches to galas and partner meetings, every event is designed around its people and purpose, leaving a lasting impression long after it ends.",
+            "We design conferences, launches, galas and partner events around a specific business objective. First we establish what the event needs to achieve, and only then do we define its format, location and flow.",
         },
         {
           id: "incentive",
           title: "INCENTIVE",
           description:
-            "We design incentive trips and motivational journeys that become practical tools for strengthening engagement and team loyalty. From intimate executive retreats to multi-day expeditions, each experience is shaped around the people, the destination and the purpose of the journey.",
+            "We create incentive trips for teams, clients and executive groups — from short getaways to more extensive multi-day programmes. Each one is built around the particular group, purpose and destination rather than a ready-made formula.",
         },
         {
           id: "private",
           title: "PRIVATE",
           description:
-            "Life's most important moments deserve an exceptional setting. We organise private events such as engagements, anniversaries, birthdays and family celebrations, taking care of every detail and creating an atmosphere guests will remember for years.",
+            "We organise private events — birthdays, anniversaries, engagements and family celebrations. Rather than starting with a ready-made scenario, we first establish what kind of occasion it should be and what genuinely matters to the people who will be part of it.",
         },
         {
           id: "expeditions",
           title: "EXPEDITIONS",
           description:
-            "Not every journey leads to a hotel or conference room. We create bespoke expeditions, from safaris and off-road adventures to extraordinary journeys through places rarely found in traditional travel catalogues. The destination matters less than the experience itself.",
+            "We design journeys and expeditions that go beyond the standard tourist itinerary — from safaris and off-road routes to less obvious destinations and places. Every programme is built from scratch around what participants want to experience and how they want to travel.",
         },
         {
           id: "team",
           title: "TEAM",
           description:
-            "Strong teams are built through shared experiences. We design team-building events, outdoor activities, workshops and trips that improve collaboration, strengthen relationships and allow people to see one another from an entirely new perspective.",
+            "We create trips, activities and gatherings that give teams time together outside their usual working environment. We don't start with a catalogue of attractions — we choose the format around the people, the dynamics of the team and the reason for getting together.",
         },
         {
           id: "bespoke",
           title: "BESPOKE",
           description:
-            "Some ideas simply don't fit into predefined categories. When an event calls for a truly individual approach, we create the solution from the ground up, combining creativity with precise execution regardless of scale or location.",
+            "Not every idea fits neatly into an existing category. If a project calls for an unusual format, location or approach, we build it from the ground up and shape the entire process around the specific situation.",
         },
       ],
     },
@@ -262,12 +264,12 @@ const en = {
     establishment: "Est. Wrocław // Q3 2026",
 
     heading: {
-      firstLine: "Ready to create",
-      secondLine: "something unforgettable?",
+      firstLine: "Let's start with",
+      secondLine: "a conversation.",
     },
 
     description:
-      "Every story is different, which is why we never start with ready-made scenarios. We begin with a conversation about what you want people to experience and remember. Everything else is designed around people, place and emotion.",
+      "You don't need to come to us with a finished scenario. An idea, an occasion or a goal you'd like to talk about is enough. That's where we start.",
 
     actions: {
       startProject: "Start a project",
@@ -294,7 +296,7 @@ const en = {
 
       emailPromptSecondLine: "an email",
 
-      email: "o123@event.pl",
+      email: "hello@o123.pl",
 
       mediaLabel: "Media",
     },
@@ -309,6 +311,22 @@ const en = {
       privacyPolicy: "Privacy Policy",
 
       author: "Made by: @Pepiqity",
+    },
+  },
+
+  homePage: {
+    metadata: {
+      title: "o123 | Events, incentive travel & unique experiences",
+      description:
+        "We design corporate events, incentive travel, private celebrations and bespoke expeditions around people, emotion and purpose.",
+    },
+  },
+
+  journalPage: {
+    metadata: {
+      title: "Journal | o123",
+      description:
+        "Ideas, psychology and experience design. Exploring how to create moments that stay with people long after an event is over.",
     },
   },
 

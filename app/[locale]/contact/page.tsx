@@ -22,9 +22,37 @@ export async function generateMetadata({
   const { locale } = await params;
   const dictionary = await getDictionary(locale);
 
+  const title = dictionary.contactPage.metadata.title;
+  const description = dictionary.contactPage.metadata.description;
+
   return {
-    title: dictionary.contactPage.metadata.title,
-    description: dictionary.contactPage.metadata.description,
+    title,
+    description,
+
+    alternates: {
+      canonical: `/${locale}/contact`,
+      languages: {
+        pl: "/pl/contact",
+        en: "/en/contact",
+        de: "/de/contact",
+        cs: "/cs/contact",
+        "x-default": "/pl/contact",
+      },
+    },
+
+    openGraph: {
+      type: "website",
+      siteName: "o123",
+      title,
+      description,
+      url: `/${locale}/contact`,
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

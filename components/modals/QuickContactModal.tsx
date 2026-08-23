@@ -1,5 +1,7 @@
 "use client";
 
+import { trackEvent } from "@/lib/analytics";
+
 import ModalShell from "./ModalShell";
 
 type QuickContactModalProps = {
@@ -10,12 +12,18 @@ type QuickContactModalProps = {
   email?: string;
 };
 
+type ContactEvent =
+  | "whatsapp_click"
+  | "teams_click"
+  | "email_click";
+
 type ContactOptionProps = {
   number: string;
   title: string;
   description: string;
   label: string;
   href?: string;
+  analyticsEvent: ContactEvent;
 };
 
 function ContactOption({
@@ -24,6 +32,7 @@ function ContactOption({
   description,
   label,
   href,
+  analyticsEvent,
 }: ContactOptionProps) {
   return (
     <div
@@ -75,6 +84,7 @@ function ContactOption({
                 ? undefined
                 : "noreferrer"
             }
+            onClick={() => trackEvent(analyticsEvent)}
             className="
               group
               mt-6
@@ -200,6 +210,7 @@ export default function QuickContactModal({
             description="Quick message, fast response."
             label="Open WhatsApp"
             href={whatsappUrl}
+            analyticsEvent="whatsapp_click"
           />
 
           <ContactOption
@@ -208,6 +219,7 @@ export default function QuickContactModal({
             description="Start a conversation on Teams."
             label="Open Teams"
             href={teamsUrl}
+            analyticsEvent="teams_click"
           />
 
           <ContactOption
@@ -216,6 +228,7 @@ export default function QuickContactModal({
             description="Prefer something more traditional?"
             label="Send an e-mail"
             href={emailUrl}
+            analyticsEvent="email_click"
           />
         </div>
       </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { useModal } from "@/components/modals/ModalProvider";
 import { Reveal } from "@/components/motion/Reveal";
+import type { Locale } from "@/i18n/config";
 
 const socialLinkClassName =
   "group type-text type-lead inline-flex items-center gap-3 uppercase text-[var(--color-sand)]";
@@ -58,6 +59,7 @@ type ContactContent = {
 
 type ContactProps = {
   content: ContactContent;
+  locale: Locale;
 };
 
 function AvailabilityStatus() {
@@ -81,9 +83,14 @@ function AvailabilityStatus() {
             <span className="relative size-2.5 rounded-full bg-[#72b88d]" />
           </span>
 
-          <p className="type-text type-lead uppercase">Open for projects</p>
+          <p className="type-text type-lead uppercase">
+            Open for projects
+          </p>
 
-          <span aria-hidden="true" className="type-text type-lead">
+          <span
+            aria-hidden="true"
+            className="type-text type-lead"
+          >
             ↗
           </span>
         </div>
@@ -109,7 +116,11 @@ function ContactActions({
     <div className="flex flex-wrap items-center gap-x-8 gap-y-6">
       <button
         type="button"
-        onClick={() => openModal("quote")}
+        onClick={() =>
+          openModal("quote", {
+            ctaLocation: "contact",
+          })
+        }
         className="
           group
           inline-flex
@@ -172,7 +183,11 @@ function ContactActions({
 
       <button
         type="button"
-        onClick={() => openModal("quick-contact")}
+        onClick={() =>
+          openModal("quick-contact", {
+            ctaLocation: "contact",
+          })
+        }
         className="
           group
           inline-flex
@@ -245,16 +260,24 @@ function SocialLink({
 }) {
   return (
     <a href={href} className={socialLinkClassName}>
-      <span aria-hidden="true" className={socialArrowClassName}>
+      <span
+        aria-hidden="true"
+        className={socialArrowClassName}
+      >
         ↗
       </span>
 
-      <span className={socialLabelClassName}>{children}</span>
+      <span className={socialLabelClassName}>
+        {children}
+      </span>
     </a>
   );
 }
 
-export default function Contact({ content }: ContactProps) {
+export default function Contact({
+  content,
+  locale,
+}: ContactProps) {
   return (
     <section
       id="contact"
@@ -263,82 +286,70 @@ export default function Contact({ content }: ContactProps) {
       className="relative bg-[#1C2A25]"
     >
       <div className="relative z-10">
-        {/* Mobile main layout */}
-        <div className="px-4 py-8 min-[834px]:hidden">
-          <AvailabilityStatus />
-
-          <Reveal distance="small" delay={60}>
-            <h2 className="mt-8 type-heading type-heading-xl">
-              {content.heading.firstLine}
-              <br />
-              {content.heading.secondLine}
-            </h2>
-          </Reveal>
-
-          <Reveal distance="small" delay={140}>
-            <p className="mt-8 type-text type-body w-full max-w-[520px]">
-              {content.description}
-            </p>
-          </Reveal>
-
-          <Reveal distance="small" delay={220} className="mt-8">
-            <ContactActions
-              startProject={content.actions.startProject}
-              letsChat={content.actions.letsChat}
-            />
-          </Reveal>
-        </div>
-
-        {/* Tablet main layout */}
-        <div className="hidden px-8 pb-12 pt-12 min-[834px]:block min-[1440px]:hidden">
-          <AvailabilityStatus />
-
-          <Reveal distance="small" delay={60}>
-            <h2 className="mt-16 type-heading type-heading-xl">
-              {content.heading.firstLine}
-              <br />
-              {content.heading.secondLine}
-            </h2>
-          </Reveal>
-
-          <div className="mt-16 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-8">
-            <Reveal distance="small" delay={140}>
-              <p className="type-text type-body w-full max-w-[420px]">
-                {content.description}
-              </p>
-            </Reveal>
-
-            <Reveal
-              distance="small"
-              delay={220}
-              className="justify-self-end"
-            >
-              <ContactActions
-                startProject={content.actions.startProject}
-                letsChat={content.actions.letsChat}
-              />
-            </Reveal>
-          </div>
-        </div>
-
-        {/* Desktop main layout */}
-        <div className="hidden px-[var(--page-gutter)] py-[72px] min-[1440px]:grid min-[1440px]:grid-cols-3">
-          <div className="pl-12">
+        {/* Shared responsive main layout */}
+        <div
+          className="
+            px-4
+            py-8
+            min-[834px]:px-8
+            min-[834px]:pb-12
+            min-[834px]:pt-12
+            min-[1440px]:grid
+            min-[1440px]:grid-cols-3
+            min-[1440px]:px-[var(--page-gutter)]
+            min-[1440px]:py-[72px]
+          "
+        >
+          {/* Availability */}
+          <div className="min-[1440px]:pl-12">
             <AvailabilityStatus />
           </div>
 
-          <div className="col-span-2 pl-20">
+          {/* Heading + description + actions */}
+          <div className="min-[1440px]:col-span-2 min-[1440px]:pl-20">
             <Reveal distance="small" delay={60}>
-              <h2 className="type-heading type-heading-xl">
+              <h2
+                className="
+                  mt-8
+                  type-heading
+                  type-heading-xl
+                  min-[834px]:mt-16
+                  min-[1440px]:mt-0
+                "
+              >
                 {content.heading.firstLine}
                 <br />
                 {content.heading.secondLine}
               </h2>
             </Reveal>
 
-            <div className="mt-[144px] grid grid-cols-[minmax(0,1fr)_auto] items-center gap-8 pr-12">
+            <div
+              className="
+                mt-8
+                flex
+                flex-col
+                gap-8
+
+                min-[834px]:mt-16
+                min-[834px]:grid
+                min-[834px]:grid-cols-[minmax(0,1fr)_auto]
+                min-[834px]:items-center
+
+                min-[1440px]:mt-[144px]
+                min-[1440px]:pr-12
+              "
+            >
               <Reveal distance="small" delay={140}>
-                <p className="type-text type-body w-full max-w-[360px]">
+                <p
+                  className="
+                    type-text
+                    type-body
+                    w-full
+                    max-w-[520px]
+                    min-[834px]:max-w-[420px]
+                    min-[1440px]:max-w-[360px]
+                  "
+                >
                   {content.description}
                 </p>
               </Reveal>
@@ -346,7 +357,7 @@ export default function Contact({ content }: ContactProps) {
               <Reveal
                 distance="small"
                 delay={220}
-                className="justify-self-end"
+                className="min-[834px]:justify-self-end"
               >
                 <ContactActions
                   startProject={content.actions.startProject}
@@ -374,7 +385,10 @@ export default function Contact({ content }: ContactProps) {
                     {content.details.addressSecondLine}
                   </p>
 
-                  <a href="tel:+48533615713" className="mt-3 inline-block">
+                  <a
+                    href="tel:+48533615713"
+                    className="mt-3 inline-block"
+                  >
                     {content.details.phone}
                   </a>
                 </address>
@@ -389,7 +403,7 @@ export default function Contact({ content }: ContactProps) {
                 </p>
 
                 <a
-                  href="mailto:o123@event.pl"
+                  href={`mailto:${content.details.email}`}
                   className="mt-8 inline-block type-text type-lead-lg font-bold"
                 >
                   {content.details.email}
@@ -406,15 +420,25 @@ export default function Contact({ content }: ContactProps) {
                   aria-label={content.accessibility.socialMedia}
                   className="mt-4 flex flex-col items-start"
                 >
-                  <SocialLink href="#linkedin">LinkedIn</SocialLink>
+                  <SocialLink href="#linkedin">
+                    LinkedIn
+                  </SocialLink>
 
-                  <SocialLink href="#instagram">Instagram</SocialLink>
+                  <SocialLink href="#instagram">
+                    Instagram
+                  </SocialLink>
 
-                  <SocialLink href="#facebook">FB</SocialLink>
+                  <SocialLink href="#facebook">
+                    FB
+                  </SocialLink>
 
-                  <SocialLink href="#x">X</SocialLink>
+                  <SocialLink href="#x">
+                    X
+                  </SocialLink>
 
-                  <SocialLink href="#tiktok">TikTok</SocialLink>
+                  <SocialLink href="#tiktok">
+                    TikTok
+                  </SocialLink>
                 </nav>
               </div>
             </div>
@@ -430,7 +454,7 @@ export default function Contact({ content }: ContactProps) {
 
                 <div className="flex items-center gap-1 type-text type-caption min-[834px]:justify-self-center">
                   <Link
-                    href="/regulamin"
+                    href={`/${locale}/terms`}
                     className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                   >
                     {content.footer.terms}
@@ -439,7 +463,7 @@ export default function Contact({ content }: ContactProps) {
                   <span aria-hidden="true">,</span>
 
                   <Link
-                    href="/polityka-prywatnosci"
+                    href={`/${locale}/privacy`}
                     className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                   >
                     {content.footer.privacyPolicy}

@@ -47,21 +47,7 @@ export default function ArticleHero({
 
       {/* Title */}
       <h1 className="mt-8 max-w-[1100px] type-heading type-heading-xl">
-        {article.slug === "dlaczego-pamietamy-emocje" ? (
-          <>
-            <span className="hidden min-[834px]:inline">
-              Dlaczego pamiętamy emocje,
-              <br />
-              a nie wydarzenia?
-            </span>
-
-            <span className="min-[834px]:hidden">
-              {article.title}
-            </span>
-          </>
-        ) : (
-          article.title
-        )}
+        {article.title}
       </h1>
 
       {/* Lead */}

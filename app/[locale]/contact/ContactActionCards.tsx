@@ -117,7 +117,11 @@ export default function ContactActionCards({
     >
       <button
         type="button"
-        onClick={() => openModal("quote")}
+        onClick={() =>
+          openModal("quote", {
+            ctaLocation: "contact_page",
+          })
+        }
         className={cardClassName}
       >
         <div className="flex w-full items-start justify-between">
@@ -175,7 +179,11 @@ export default function ContactActionCards({
 
       <button
         type="button"
-        onClick={() => openModal("schedule")}
+        onClick={() =>
+          openModal("schedule", {
+            ctaLocation: "contact_page",
+          })
+        }
         className={cardClassName}
       >
         <div className="flex w-full items-start justify-between">
@@ -233,7 +241,11 @@ export default function ContactActionCards({
 
       <button
         type="button"
-        onClick={() => openModal("quick-contact")}
+        onClick={() =>
+          openModal("quick-contact", {
+            ctaLocation: "contact_page",
+          })
+        }
         className={`
           ${cardClassName}
           min-[834px]:col-span-2

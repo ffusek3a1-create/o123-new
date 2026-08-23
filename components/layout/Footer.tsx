@@ -27,6 +27,31 @@ const footerLinkClassName = `
   motion-reduce:after:transition-none
 `;
 
+const legalLabels: Record<
+  Locale,
+  {
+    privacy: string;
+    terms: string;
+  }
+> = {
+  pl: {
+    privacy: "Polityka prywatności",
+    terms: "Regulamin",
+  },
+  en: {
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions",
+  },
+  de: {
+    privacy: "Datenschutzerklärung",
+    terms: "Nutzungsbedingungen",
+  },
+  cs: {
+    privacy: "Zásady ochrany osobních údajů",
+    terms: "Podmínky používání",
+  },
+};
+
 const socialLinkClassName = `
   type-caption
   uppercase
@@ -47,6 +72,8 @@ const socialLinkClassName = `
 export default function Footer({
   locale,
 }: FooterProps) {
+  const labels = legalLabels[locale];
+
   return (
     <footer className="border-t border-[var(--color-sand)]/30 text-[var(--color-sand)]">
       <div className="px-[var(--page-gutter)]">
@@ -193,21 +220,14 @@ export default function Footer({
               href={`/${locale}/privacy`}
               className={footerLinkClassName}
             >
-              Privacy policy
+              {labels.privacy}
             </Link>
 
             <Link
               href={`/${locale}/terms`}
               className={footerLinkClassName}
             >
-              Terms &amp; conditions
-            </Link>
-
-            <Link
-              href={`/${locale}/cookies`}
-              className={footerLinkClassName}
-            >
-              Cookies policy
+              {labels.terms}
             </Link>
           </div>
 

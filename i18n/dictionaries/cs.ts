@@ -36,13 +36,13 @@ const cs = {
 
     paragraph: {
       intro:
-        "Navrhujeme zážitky, které mají význam ještě dlouho poté, co skončí.",
+        "Navrhujeme akce, které zůstávají důležité i poté, co skončí.",
 
       emphasis:
-        "Od incentivních cest a firemních akcí po soukromé oslavy a expedice šité na míru.",
+        "Od incentivních cest a firemních akcí po soukromé oslavy a projekty vytvářené zcela na míru.",
 
       outro:
-        "Každý příběh začínáme pochopením lidí a účelu, nikoli předem připraveným scénářem. Právě proto si účastníci nepamatují pouze místa, která navštívili, ale především emoce, které prožili.",
+        "Začínáme u lidí a cíle, ne u hotového plánu. Všechno ostatní stavíme kolem toho, co je pro účastníky skutečně důležité.",
     },
   },
 
@@ -58,17 +58,19 @@ const cs = {
 
     paragraph: {
       intro:
-        "Každý náš projekt začíná správnými otázkami a pozorným nasloucháním.",
+        "Každý projekt začínáme rozhovorem.",
 
       emphasisOne:
-        "Nevěříme na univerzální řešení, protože každý zážitek má svůj vlastní kontext.",
+        "Neexistuje jeden recept na dobrou akci, protože výchozí situace je pokaždé jiná.",
 
       middle:
-        "Druh, tempo a atmosféru akce přizpůsobujeme tomu, kdo jste, jak se mají lidé cítit a čeho chcete dosáhnout. Nejprve chceme pochopit,",
+        "Formát, tempo a charakter přizpůsobujeme lidem, příležitosti a cíli. Nejprve chceme pochopit,",
 
-      emphasisTwo: "jaké emoce má tento okamžik vyvolat,",
+      emphasisTwo:
+        "co si mají účastníci z celé zkušenosti odnést,",
 
-      outro: "a vše ostatní přirozeně vyplyne z tohoto rozhovoru.",
+      outro:
+        "a teprve potom skládáme vše, co k tomu má vést.",
     },
   },
 
@@ -96,7 +98,7 @@ const cs = {
               text: " Dobré zážitky nezačínají nápady. ",
             },
             {
-              text: "Začínají jasným cílem.",
+              text: "Začínají odpovědí na tuto otázku.",
               emphasized: true,
             },
           ],
@@ -107,7 +109,7 @@ const cs = {
           title: "Rytmus & emoce",
           description: [
             {
-              text: "Dobrý zážitek má začátek, napětí a závěr. Proto navrhujeme akce jako příběhy s rytmem, který účastníky přirozeně vede od prvního okamžiku až k poslednímu.",
+              text: "Záleží nám na tom, aby celá akce působila plynule a přirozeně — od prvního kontaktu s účastníky až po její závěr.",
             },
           ],
         },
@@ -175,37 +177,37 @@ const cs = {
           id: "business",
           title: "BUSINESS",
           description:
-            "Vytváříme firemní akce, které pomáhají budovat vztahy, posilovat důvěru a sdělovat to, co nelze předat prezentací. Konference, produktové premiéry, galavečery i setkání s partnery navrhujeme kolem lidí a cíle dané akce, takže zanechávají silný dojem ještě dlouho po skončení.",
+            "Navrhujeme konference, produktové premiéry, galavečery a setkání s partnery s konkrétním obchodním cílem. Nejprve si ujasníme, čeho má akce dosáhnout, a teprve potom volíme její formát, místo a průběh.",
         },
         {
           id: "incentive",
           title: "INCENTIVE",
           description:
-            "Navrhujeme incentivní cesty a motivační programy, které se stávají skutečným nástrojem pro posilování angažovanosti a loajality týmů. Od komorních pobytů pro vedení až po vícedenní expedice vytváříme zážitky přizpůsobené lidem, místu a cíli celé cesty.",
+            "Vytváříme incentivní cesty pro týmy, klienty i vedení — od krátkých pobytů až po rozsáhlejší vícedenní programy. Každou cestu stavíme kolem konkrétní skupiny, cíle a místa místo toho, abychom vycházeli z hotového schématu.",
         },
         {
           id: "private",
           title: "SOUKROMÉ",
           description:
-            "Nejdůležitější okamžiky si zaslouží výjimečný rámec. Organizujeme soukromé události, jako jsou zásnuby, výročí, narozeniny nebo rodinné oslavy, pečujeme o každý detail a vytváříme atmosféru, na kterou budou hosté vzpomínat celé roky.",
+            "Organizujeme soukromé akce — narozeniny, výročí, zásnuby i rodinné oslavy. Místo hotového scénáře nejprve řešíme, jaký charakter má setkání mít a co je skutečně důležité pro lidi, kteří budou jeho součástí.",
         },
         {
           id: "expeditions",
           title: "EXPEDICE",
           description:
-            "Ne každá cesta vede do hotelu nebo konferenčního sálu. Organizujeme expedice šité na míru — od safari a terénních dobrodružství až po výjimečné cesty na místa, která v běžných katalozích cestovních kanceláří jen tak nenajdete. Nejde o destinaci, ale o samotný zážitek.",
+            "Navrhujeme cesty a expedice mimo běžné turistické trasy — od safari a terénních výprav po méně obvyklé destinace a místa. Program vzniká od základu podle toho, co chtějí účastníci zažít a jakým způsobem chtějí cestovat.",
         },
         {
           id: "team",
           title: "TÝM",
           description:
-            "Silný tým vzniká prostřednictvím společných zážitků. Navrhujeme teambuildingové akce, outdoorové aktivity, workshopy i cesty, které podporují spolupráci, posilují vztahy a umožňují lidem podívat se na sebe z úplně nové perspektivy.",
+            "Vytváříme výjezdy, aktivity a setkání, při kterých mohou týmy trávit společný čas mimo běžné pracovní prostředí. Nezačínáme katalogem atrakcí — formát volíme podle lidí, dynamiky týmu a toho, proč se vlastně setkáváte.",
         },
         {
           id: "bespoke",
           title: "NA MÍRU",
           description:
-            "Ne každý nápad se vejde do předem připravené kategorie. Pokud plánujete akci, která vyžaduje nestandardní přístup, vytvoříme řešení od samého začátku. Propojujeme kreativitu s přesnou organizací bez ohledu na rozsah nebo místo realizace.",
+            "Ne každý nápad zapadá do existující kategorie. Pokud projekt vyžaduje neobvyklý formát, místo nebo způsob realizace, vytvoříme ho od základu a celý proces přizpůsobíme konkrétní situaci.",
         },
       ],
     },
@@ -257,12 +259,12 @@ const cs = {
     establishment: "Est. Wrocław // Q3 2026",
 
     heading: {
-      firstLine: "Jste připraveni vytvořit",
-      secondLine: "něco nezapomenutelného?",
+      firstLine: "Začněme",
+      secondLine: "rozhovorem.",
     },
 
     description:
-      "Každý příběh je jiný, a proto nikdy nezačínáme hotovým scénářem. Začínáme rozhovorem o tom, co mají lidé prožít a co si mají zapamatovat. Vše ostatní navrhujeme kolem lidí, místa a emocí.",
+      "Nemusíte k nám přijít s hotovým scénářem. Stačí nápad, příležitost nebo cíl, o kterém chcete mluvit. Právě od toho začínáme.",
 
     actions: {
       startProject: "Start a project",
@@ -282,7 +284,7 @@ const cs = {
 
       emailPromptFirstLine: "Nebaví vás formuláře?",
       emailPromptSecondLine: "Napište nám e-mail",
-      email: "o123@event.pl",
+      email: "hello@o123.pl",
 
       mediaLabel: "Sociální sítě",
     },
@@ -293,6 +295,22 @@ const cs = {
       terms: "Obchodní podmínky",
       privacyPolicy: "Zásady ochrany soukromí",
       author: "Made by: @Pepiqity",
+    },
+  },
+
+  homePage: {
+    metadata: {
+      title: "o123 | Eventy, incentivní cesty a jedinečné zážitky",
+      description:
+        "Navrhujeme firemní akce, incentivní cesty, soukromé oslavy a expedice na míru kolem lidí, emocí a jasného cíle.",
+    },
+  },
+
+  journalPage: {
+    metadata: {
+      title: "Journal | o123",
+      description:
+        "Myšlenky, psychologie a design zážitků. O tom, jak vytvářet momenty, které v lidech zůstávají ještě dlouho po skončení akce.",
     },
   },
 

@@ -123,6 +123,7 @@ export default function Hero({ heading, paragraph }: HeroProps) {
         alt=""
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         className="z-0
           object-cover
@@ -263,7 +264,7 @@ export default function Hero({ heading, paragraph }: HeroProps) {
         "
       />
 
-      {/* Mobile content */}
+      {/* Responsive content */}
       <div
         className="
           relative
@@ -275,64 +276,9 @@ export default function Hero({ heading, paragraph }: HeroProps) {
           px-[var(--page-gutter)]
           pb-[72px]
           pt-24
-          md:hidden
-        "
-      >
-        <div>
-          <HeroHeading heading={heading} />
-
-          <div className="mt-12">
-            <HeroParagraph paragraph={paragraph} />
-
-            <div className="mt-8">
-              <ButtonLink href="#contact" className="text-[var(--color-sand)]">
-                Get in touch
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Tablet content */}
-      <div
-        className="
-          hero-tablet-content
-          relative
-          z-10
-          hidden
-          min-h-[calc(100svh-7rem)]
-          flex-col
-          justify-end
-          px-[var(--page-gutter)]
-          pb-[72px]
-          pt-24
-          md:flex
-        "
-      >
-        <HeroHeading heading={heading} />
-
-        <div className="mt-12">
-          <HeroParagraph paragraph={paragraph} />
-
-          <div className="mt-8">
-            <ButtonLink href="#contact" className="text-[var(--color-sand)]">
-              Get in touch
-            </ButtonLink>
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop content */}
-      <div
-        className="
-          hero-desktop-content
-          relative
-          z-10
-          min-h-[calc(100svh-7rem)]
-          flex-col
-          px-[calc(var(--page-gutter)+48px)]
-          pb-[72px]
-          pt-[348px]
+          min-[1440px]:justify-start
+          min-[1440px]:px-[calc(var(--page-gutter)+48px)]
+          min-[1440px]:pt-[348px]
         "
       >
         <div className="hero-desktop-heading">
@@ -341,25 +287,31 @@ export default function Hero({ heading, paragraph }: HeroProps) {
 
         <div
           className="
-            mt-auto
+            mt-12
             flex
-            items-center
-            justify-between
-            gap-16
-            pt-[80px]
+            flex-col
+            min-[1440px]:mt-auto
+            min-[1440px]:flex-row
+            min-[1440px]:items-center
+            min-[1440px]:justify-between
+            min-[1440px]:gap-16
+            min-[1440px]:pt-[80px]
           "
         >
-          <ButtonLink href="#contact" className="text-[var(--color-sand)]">
-            Get in touch
-          </ButtonLink>
+          <div className="order-2 mt-8 min-[1440px]:order-1 min-[1440px]:mt-0">
+            <ButtonLink href="#contact" className="text-[var(--color-sand)]">
+              Get in touch
+            </ButtonLink>
+          </div>
 
-          <HeroParagraph paragraph={paragraph} />
+          <div className="order-1 min-[1440px]:order-2">
+            <HeroParagraph paragraph={paragraph} />
+          </div>
         </div>
       </div>
 
       <style>{`
-        .hero-desktop-decoration,
-        .hero-desktop-content {
+        .hero-desktop-decoration {
           display: none;
         }
 
@@ -404,16 +356,8 @@ export default function Hero({ heading, paragraph }: HeroProps) {
             display: none;
           }
 
-          .hero-tablet-content {
-            display: none;
-          }
-
           .hero-desktop-decoration {
             display: block;
-          }
-
-          .hero-desktop-content {
-            display: flex;
           }
         }
 

@@ -31,10 +31,10 @@ export default function JournalArticleRow({
             </p>
 
             <time
-              dateTime={article.date}
+              dateTime={article.published}
               className="mt-6 type-caption uppercase opacity-40"
             >
-              {article.date}
+              {article.published}
             </time>
           </div>
 
