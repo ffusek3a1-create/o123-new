@@ -619,7 +619,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                 {content.hero.heading}
               </h1>
 
-              <p className="mt-8 max-w-[560px] type-text type-body min-[834px]:mt-10 min-[1440px]:ml-auto min-[1440px]:mt-12">
+              <p className="mt-8 max-w-[560px] type-text type-body min-[834px]:mt-10 min-[1440px]:mt-12">
                 {content.hero.description}
               </p>
             </div>
