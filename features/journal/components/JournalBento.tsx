@@ -10,25 +10,39 @@ import { seriesLabels } from "../lib/seriesLabels";
 
 const journalUi = {
   pl: {
-    more: "Więcej",
+    eyebrow: "Journal / o123",
+    title: "Idee, obserwacje i historie ze świata doświadczeń.",
+    description:
+      "Przyglądamy się wydarzeniom, emocjom i decyzjom, które sprawiają, że niektóre doświadczenia zostają z nami na długo.",
     viewAllCategories: "Zobacz wszystkie kategorie",
   },
   en: {
-    more: "More",
+    eyebrow: "Journal / o123",
+    title: "Ideas, observations and stories from the world of experiences.",
+    description:
+      "We explore events, emotions and decisions that make some experiences stay with us long after they end.",
     viewAllCategories: "View all categories",
   },
   de: {
-    more: "Mehr",
+    eyebrow: "Journal / o123",
+    title: "Ideen, Beobachtungen und Geschichten aus der Welt der Erlebnisse.",
+    description:
+      "Wir betrachten Ereignisse, Emotionen und Entscheidungen, die dafür sorgen, dass manche Erlebnisse lange in Erinnerung bleiben.",
     viewAllCategories: "Alle Kategorien anzeigen",
   },
   cs: {
-    more: "Více",
+    eyebrow: "Journal / o123",
+    title: "Myšlenky, postřehy a příběhy ze světa zážitků.",
+    description:
+      "Sledujeme události, emoce a rozhodnutí, díky nimž v nás některé zážitky zůstávají ještě dlouho poté, co skončí.",
     viewAllCategories: "Zobrazit všechny kategorie",
   },
 } as const satisfies Record<
   Locale,
   {
-    more: string;
+    eyebrow: string;
+    title: string;
+    description: string;
     viewAllCategories: string;
   }
 >;
@@ -135,146 +149,16 @@ export default function JournalBento({
         {/* 02 — Intro */}
         <div className="mt-8">
           <p className="type-caption uppercase opacity-[var(--font-caption-opacity)]">
-            {seriesLabels[articleOne.series]} / {articleOne.code}
+            {ui.eyebrow}
           </p>
 
-          <time
-            dateTime={articleOne.published}
-            className="mt-2 block type-caption uppercase opacity-60"
-          >
-            {articleOne.published}
-          </time>
-
           <p className="mt-4 type-heading type-heading-lg">
-            {articleOne.title}
+            {ui.title}
           </p>
 
           <p className="mt-8 type-text type-body">
-            {articleOne.description}{" "}
-            <Link
-              href={`/${locale}/journal/${articleOne.slug}`}
-              className="
-                group/more
-                relative
-                inline-block
-                font-medium
-                text-[var(--color-blush)]
-              "
-            >
-              ...{ui.more}
-
-              <span
-                aria-hidden="true"
-                className="
-                  absolute
-                  bottom-[-4px]
-                  left-0
-                  h-[2px]
-                  w-full
-                  origin-left
-                  bg-[var(--color-blush)]
-                  transition-transform
-                  duration-300
-                  ease-out
-                  group-hover/more:scale-x-75
-                  motion-reduce:transition-none
-                "
-              />
-            </Link>
+            {ui.description}
           </p>
-
-          {/* Article links */}
-          <div className="mt-8">
-            <Link
-              href={`/${locale}/journal/${articleTwo.slug}`}
-              className="
-                group/link
-                flex
-                items-center
-                justify-between
-                gap-6
-                border-t
-                border-[var(--color-sand)]/35
-                py-5
-              "
-            >
-              <span
-                className="
-                  type-text
-                  type-lead
-                  transition-transform
-                  duration-300
-                  ease-out
-                  group-hover/link:translate-x-1
-                  motion-reduce:transform-none
-                  motion-reduce:transition-none
-                "
-              >
-                {articleTwo.title}
-              </span>
-
-              <span
-                aria-hidden="true"
-                className="
-                  shrink-0
-                  type-button
-                  transition-transform
-                  duration-300
-                  ease-out
-                  group-hover/link:translate-x-1
-                  motion-reduce:transform-none
-                  motion-reduce:transition-none
-                "
-              >
-                →
-              </span>
-            </Link>
-
-            <Link
-              href={`/${locale}/journal/${articleThree.slug}`}
-              className="
-                group/link
-                flex
-                items-center
-                justify-between
-                gap-6
-                border-y
-                border-[var(--color-sand)]/35
-                py-5
-              "
-            >
-              <span
-                className="
-                  type-text
-                  type-lead
-                  transition-transform
-                  duration-300
-                  ease-out
-                  group-hover/link:translate-x-1
-                  motion-reduce:transform-none
-                  motion-reduce:transition-none
-                "
-              >
-                {articleThree.title}
-              </span>
-
-              <span
-                aria-hidden="true"
-                className="
-                  shrink-0
-                  type-button
-                  transition-transform
-                  duration-300
-                  ease-out
-                  group-hover/link:translate-x-1
-                  motion-reduce:transform-none
-                  motion-reduce:transition-none
-                "
-              >
-                →
-              </span>
-            </Link>
-          </div>
         </div>
 
         {/* 03 — Categories */}
@@ -524,145 +408,16 @@ export default function JournalBento({
             {/* 02 — Intro */}
             <div>
               <p className="type-caption uppercase opacity-[var(--font-caption-opacity)]">
-                {seriesLabels[articleOne.series]} / {articleOne.code}
+                {ui.eyebrow}
               </p>
 
-              <time
-                dateTime={articleOne.published}
-                className="mt-2 block type-caption uppercase opacity-60"
-              >
-                {articleOne.published}
-              </time>
-
               <p className="mt-4 type-heading type-heading-lg">
-                {articleOne.title}
+                {ui.title}
               </p>
 
               <p className="mt-6 type-text type-body">
-                {articleOne.description}{" "}
-                <Link
-                  href={`/${locale}/journal/${articleOne.slug}`}
-                  className="
-                    group/more
-                    relative
-                    inline-block
-                    font-medium
-                    text-[var(--color-blush)]
-                  "
-                >
-                  ...{ui.more}
-
-                  <span
-                    aria-hidden="true"
-                    className="
-                      absolute
-                      bottom-[-4px]
-                      left-0
-                      h-[2px]
-                      w-full
-                      origin-left
-                      bg-[var(--color-blush)]
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/more:scale-x-75
-                      motion-reduce:transition-none
-                    "
-                  />
-                </Link>
+                {ui.description}
               </p>
-
-              <div className="mt-8">
-                <Link
-                  href={`/${locale}/journal/${articleTwo.slug}`}
-                  className="
-                    group/link
-                    flex
-                    items-center
-                    justify-between
-                    gap-6
-                    border-t
-                    border-[var(--color-sand)]/35
-                    py-5
-                  "
-                >
-                  <span
-                    className="
-                      type-text
-                      type-lead
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/link:translate-x-1
-                      motion-reduce:transform-none
-                      motion-reduce:transition-none
-                    "
-                  >
-                    {articleTwo.title}
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                    className="
-                      shrink-0
-                      type-button
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/link:translate-x-1
-                      motion-reduce:transform-none
-                      motion-reduce:transition-none
-                    "
-                  >
-                    →
-                  </span>
-                </Link>
-
-                <Link
-                  href={`/${locale}/journal/${articleThree.slug}`}
-                  className="
-                    group/link
-                    flex
-                    items-center
-                    justify-between
-                    gap-6
-                    border-y
-                    border-[var(--color-sand)]/35
-                    py-5
-                  "
-                >
-                  <span
-                    className="
-                      type-text
-                      type-lead
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/link:translate-x-1
-                      motion-reduce:transform-none
-                      motion-reduce:transition-none
-                    "
-                  >
-                    {articleThree.title}
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                    className="
-                      shrink-0
-                      type-button
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/link:translate-x-1
-                      motion-reduce:transform-none
-                      motion-reduce:transition-none
-                    "
-                  >
-                    →
-                  </span>
-                </Link>
-              </div>
             </div>
 
             {/* 03 — Categories */}
@@ -946,146 +701,19 @@ export default function JournalBento({
             "
           >
             {/* 02 — Intro */}
-            <div className="flex min-h-0 flex-col">
+            <div className="flex min-h-0 flex-col justify-center">
               <div>
                 <p className="type-caption uppercase opacity-[var(--font-caption-opacity)]">
-                  {seriesLabels[articleOne.series]} / {articleOne.code}
+                  {ui.eyebrow}
                 </p>
 
-                <time
-                  dateTime={articleOne.published}
-                  className="mt-2 block type-caption uppercase opacity-60"
-                >
-                  {articleOne.published}
-                </time>
-
                 <p className="mt-4 max-w-[760px] type-heading type-heading-lg">
-                  {articleOne.title}
+                  {ui.title}
                 </p>
 
                 <p className="mt-6 max-w-[720px] type-text type-body">
-                  {articleOne.description}{" "}
-                  <Link
-                    href={`/${locale}/journal/${articleOne.slug}`}
-                    className="
-                      group/more
-                      relative
-                      inline-block
-                      font-medium
-                      text-[var(--color-blush)]
-                    "
-                  >
-                    ...{ui.more}
-
-                    <span
-                      aria-hidden="true"
-                      className="
-                        absolute
-                        bottom-[-4px]
-                        left-0
-                        h-[2px]
-                        w-full
-                        origin-left
-                        bg-[var(--color-blush)]
-                        transition-transform
-                        duration-300
-                        ease-out
-                        group-hover/more:scale-x-75
-                        motion-reduce:transition-none
-                      "
-                    />
-                  </Link>
+                  {ui.description}
                 </p>
-              </div>
-
-              <div className="mt-auto pt-12">
-                <Link
-                  href={`/${locale}/journal/${articleTwo.slug}`}
-                  className="
-                    group/link
-                    flex
-                    items-center
-                    justify-between
-                    gap-8
-                    border-t
-                    border-[var(--color-sand)]/35
-                    py-5
-                  "
-                >
-                  <span
-                    className="
-                      type-text
-                      type-lead
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/link:translate-x-1
-                      motion-reduce:transform-none
-                      motion-reduce:transition-none
-                    "
-                  >
-                    {articleTwo.title}
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                    className="
-                      type-button
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/link:translate-x-1
-                      motion-reduce:transform-none
-                      motion-reduce:transition-none
-                    "
-                  >
-                    →
-                  </span>
-                </Link>
-
-                <Link
-                  href={`/${locale}/journal/${articleThree.slug}`}
-                  className="
-                    group/link
-                    flex
-                    items-center
-                    justify-between
-                    gap-8
-                    border-y
-                    border-[var(--color-sand)]/35
-                    py-5
-                  "
-                >
-                  <span
-                    className="
-                      type-text
-                      type-lead
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/link:translate-x-1
-                      motion-reduce:transform-none
-                      motion-reduce:transition-none
-                    "
-                  >
-                    {articleThree.title}
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                    className="
-                      type-button
-                      transition-transform
-                      duration-300
-                      ease-out
-                      group-hover/link:translate-x-1
-                      motion-reduce:transform-none
-                      motion-reduce:transition-none
-                    "
-                  >
-                    →
-                  </span>
-                </Link>
               </div>
             </div>
 
