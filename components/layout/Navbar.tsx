@@ -223,9 +223,13 @@ export default function Navbar({ menuDescriptions }: NavbarProps) {
             <Link
               href={`/${currentLocale}`}
               aria-label="o123 — home"
-              className="font-[var(--font-sans)] text-sm leading-none"
+              className="inline-flex items-center"
             >
-              o123
+              <img
+                src="/images/o123-logo.svg"
+                alt="o123"
+                className="h-auto w-[58px] min-[834px]:w-[64px]"
+              />
             </Link>
 
             <nav aria-label="Primary navigation">
